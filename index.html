@@ -147,7 +147,8 @@
             </h1>
 
             <p class="hero-desc">
-              Based in Alappuzha, Kerala, <strong>Zynaq.Aqua Pvt. Ltd.</strong> converges autonomous robotics, precision IoT sensors, edge computing, and artificial intelligence into a cohesive smart ecosystem that maximizes farm productivity and eliminates manual guesswork.
+              <span class="hero-desc-desktop">Based in Alappuzha, Kerala, <strong>Zynaq.Aqua Pvt. Ltd.</strong> converges autonomous robotics, precision IoT sensors, edge computing, and artificial intelligence into a cohesive smart ecosystem that maximizes farm productivity and eliminates manual guesswork.</span>
+              <span class="hero-desc-mobile">Engineered in Alappuzha, Kerala: Autonomous robotics, precision IoT sensors, and AI intelligence built to maximize aquaculture yields.</span>
             </p>
 
             <!-- Navigation & Call-to-Action Buttons -->
@@ -233,7 +234,7 @@
     <!-- ==========================================================================
          OVERVIEW SECTION
          ========================================================================== -->
-    <section class="overview-section" id="overview" style="padding: 90px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); background: var(--bg-surface);">
+    <section class="overview-section" id="overview">
       <div class="container">
         <div class="section-header" style="margin-bottom: 40px;">
           <span class="section-tag">Company Overview</span>
@@ -577,7 +578,7 @@
                     
                     <button class="model-hotspot" slot="hotspot-bow" data-position="135 2 37" data-normal="1 0 0" data-visibility-attribute="visible" aria-label="Dual Optical AI Camera System">
                       <div class="hotspot-dot"></div>
-                      <div class="hotspot-card">
+                      <div class="model-hotspot-card">
                         <strong>Dual Optical AI Sensors</strong>
                         <p>Twin IP68 forward cameras analyze fish feeding vigor & surface turbulence.</p>
                       </div>
@@ -585,7 +586,7 @@
 
                     <button class="model-hotspot" slot="hotspot-mast" data-position="70 58 37" data-normal="0 1 0" data-visibility-attribute="visible" aria-label="Telemetry Mast">
                       <div class="hotspot-dot"></div>
-                      <div class="hotspot-card">
+                      <div class="model-hotspot-card">
                         <strong>IoT & Beacon Mast</strong>
                         <p>Integrated 4G/LTE + LoRa long range antennas with multi-color safety strobe.</p>
                       </div>
@@ -593,7 +594,7 @@
 
                     <button class="model-hotspot" slot="hotspot-hull" data-position="50 -35 85" data-normal="0 0 1" data-visibility-attribute="visible" aria-label="Hydrodynamic Hull">
                       <div class="hotspot-dot"></div>
-                      <div class="hotspot-card">
+                      <div class="model-hotspot-card">
                         <strong>Stabilized Catamaran Hull</strong>
                         <p>“Engineered for the water” with anti-fouling composite contours for high stability.</p>
                       </div>
@@ -601,7 +602,7 @@
 
                     <button class="model-hotspot" slot="hotspot-hopper" data-position="5 0 37" data-normal="-1 0 0" data-visibility-attribute="visible" aria-label="Hopper & Dispenser">
                       <div class="hotspot-dot"></div>
-                      <div class="hotspot-card">
+                      <div class="model-hotspot-card">
                         <strong>Centrifugal Feed Dispenser</strong>
                         <p>Variable rate micro-dispenser with moisture-proof hopper level monitor.</p>
                       </div>
@@ -903,6 +904,37 @@
 
           <!-- Aerial Drone Interactive Dual-Pond Stage -->
           <div class="two-pond-stage">
+            <!-- Top Telemetry Ribbon -->
+            <div class="two-pond-telemetry-ribbon">
+              <div class="ribbon-item">
+                <span class="ribbon-dot live"></span>
+                <span class="ribbon-label">Layout:</span>
+                <strong class="ribbon-value">2 Large-Scale Ponds</strong>
+              </div>
+              <div class="ribbon-item">
+                <span class="ribbon-label">Deployments:</span>
+                <strong class="ribbon-value">1 FinFloat™ Per Pond</strong>
+              </div>
+              <div class="ribbon-item">
+                <span class="ribbon-label">Command:</span>
+                <strong class="ribbon-value">Symmetrical Central Shed</strong>
+              </div>
+              <div class="ribbon-item">
+                <span class="ribbon-label">Lighting:</span>
+                <strong class="ribbon-value">Natural Cool Daylight Telemetry</strong>
+              </div>
+            </div>
+
+            <!-- Mobile Touch Instruction Cue -->
+            <div class="hotspot-mobile-cue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>Tap hotspots to inspect telemetry</span>
+            </div>
+
             <!-- Aerial Canvas Frame with Natural Daylight Color Temperature -->
             <div class="two-pond-media-frame">
               <img 
@@ -915,37 +947,6 @@
               >
               <!-- Cool-Neutral Edge Scrim & Vignette -->
               <div class="two-pond-cool-overlay"></div>
-
-              <!-- Top Telemetry Ribbon -->
-              <div class="two-pond-telemetry-ribbon">
-                <div class="ribbon-item">
-                  <span class="ribbon-dot live"></span>
-                  <span class="ribbon-label">Layout:</span>
-                  <strong class="ribbon-value">2 Large-Scale Ponds</strong>
-                </div>
-                <div class="ribbon-item">
-                  <span class="ribbon-label">Deployments:</span>
-                  <strong class="ribbon-value">1 FinFloat™ Per Pond</strong>
-                </div>
-                <div class="ribbon-item">
-                  <span class="ribbon-label">Command:</span>
-                  <strong class="ribbon-value">Symmetrical Central Shed</strong>
-                </div>
-                <div class="ribbon-item">
-                  <span class="ribbon-label">Lighting:</span>
-                  <strong class="ribbon-value">Natural Cool Daylight Telemetry</strong>
-                </div>
-              </div>
-
-              <!-- Mobile Touch Instruction Cue -->
-              <div class="hotspot-mobile-cue">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="16" x2="12" y2="12"></line>
-                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-                <span>Tap hotspots to inspect telemetry</span>
-              </div>
 
               <!-- Interactive HUD Hotspot 1: Pond Alpha (Left Pond) -->
               <div class="pond-hotspot hotspot-pond-a" style="left: 28%; top: 62%;">
