@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initFinFloatTabs();
   initPondSimulator();
-  initRoiCalculator();
   initContactForm();
   initTelemetryTicker();
   init3DStudio();
@@ -301,109 +300,7 @@ function updateSparkline(id, minY, maxY) {
   }
 }
 
-/* ==========================================================================
-   5. FARMER ROI & FEED SAVINGS CALCULATOR
-   ========================================================================== */
 
-function initRoiCalculator() {
-  const pondsInput = document.getElementById('calcPondsInput');
-  const feedCostInput = document.getElementById('calcFeedCostInput');
-  const pondsValDisplay = document.getElementById('calcPondsDisplay');
-  const feedCostValDisplay = document.getElementById('calcFeedCostDisplay');
-
-  const savingsDisplay = document.getElementById('calcAnnualSavingsDisplay');
-  const laborDisplay = document.getElementById('calcLaborHoursDisplay');
-  const fcrDisplay = document.getElementById('calcFcrDisplay');
-  const paybackDisplay = document.getElementById('calcPaybackDisplay');
-
-  const currencyInrBtn = document.getElementById('currInrBtn');
-  const currencyUsdBtn = document.getElementById('currUsdBtn');
-
-  if (!pondsInput || !feedCostInput) return;
-
-  let currentCurrency = 'INR'; // 'INR' or 'USD'
-
-  const calculate = () => {
-    const ponds = parseInt(pondsInput.value, 10);
-    const monthlyFeed = parseFloat(feedCostInput.value);
-
-    // Update input display labels
-    pondsValDisplay.textContent = `${ponds} ${ponds === 1 ? 'Pond' : 'Ponds'}`;
-    
-    if (currentCurrency === 'INR') {
-      feedCostValDisplay.textContent = formatINR(monthlyFeed);
-    } else {
-      feedCostValDisplay.textContent = `$${monthlyFeed.toLocaleString()}`;
-    }
-
-    // Assumptions derived from modern aquaculture precision feeding benchmarks:
-    // 18.5% feed wastage reduction
-    const feedSavingRatio = 0.185;
-    const monthlySavings = monthlyFeed * feedSavingRatio;
-    const annualSavings = monthlySavings * 12;
-
-    // Labor hours saved: ~24 hours per pond per month (manual hauling, scattered feeding, manual dip testing)
-    const laborHours = ponds * 24;
-
-    // FCR improvement: baseline 1.6 drops to 1.32 (~0.28 pts)
-    const fcrImprovement = "-0.26";
-
-    // Payback period in months: hardware amortization based on ponds
-    // FinFloat unit amortized cost approx ₹85,000 / pond
-    const estimatedSystemCost = currentCurrency === 'INR' ? ponds * 85000 : ponds * 1050;
-    const paybackMonths = Math.max(3.5, (estimatedSystemCost / monthlySavings)).toFixed(1);
-
-    // Render results
-    if (savingsDisplay) {
-      if (currentCurrency === 'INR') {
-        savingsDisplay.textContent = formatINR(annualSavings);
-      } else {
-        savingsDisplay.textContent = `$${Math.round(annualSavings).toLocaleString()}`;
-      }
-    }
-
-    if (laborDisplay) laborDisplay.textContent = `${laborHours.toLocaleString()} hrs / mo`;
-    if (fcrDisplay) fcrDisplay.textContent = `${fcrImprovement} FCR`;
-    if (paybackDisplay) paybackDisplay.textContent = `${paybackMonths} Months`;
-  };
-
-  // Event listeners for sliders
-  pondsInput.addEventListener('input', calculate);
-  feedCostInput.addEventListener('input', calculate);
-
-  // Currency Toggle
-  if (currencyInrBtn && currencyUsdBtn) {
-    currencyInrBtn.addEventListener('click', () => {
-      currencyInrBtn.classList.add('active');
-      currencyUsdBtn.classList.remove('active');
-      currentCurrency = 'INR';
-      feedCostInput.min = 25000;
-      feedCostInput.max = 1500000;
-      feedCostInput.step = 25000;
-      feedCostInput.value = 240000;
-      calculate();
-    });
-
-    currencyUsdBtn.addEventListener('click', () => {
-      currencyUsdBtn.classList.add('active');
-      currencyInrBtn.classList.remove('active');
-      currentCurrency = 'USD';
-      feedCostInput.min = 500;
-      feedCostInput.max = 20000;
-      feedCostInput.step = 250;
-      feedCostInput.value = 3200;
-      calculate();
-    });
-  }
-
-  // Initial calculation
-  calculate();
-}
-
-function formatINR(val) {
-  const rounded = Math.round(val);
-  return '₹' + rounded.toLocaleString('en-IN');
-}
 
 /* ==========================================================================
    6. CONTACT FORM INTERACTION & FEEDBACK

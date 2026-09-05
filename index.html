@@ -49,7 +49,6 @@
           <li class="nav-item"><a href="#model-explorer" class="nav-link-3d"><span class="nav-3d-badge">3D</span> Model</a></li>
           <li class="nav-item"><a href="#ecosystem">Ecosystem</a></li>
           <li class="nav-item"><a href="#demo">Live Demo</a></li>
-          <li class="nav-item"><a href="#calculator">ROI Calc</a></li>
           <li class="nav-item"><a href="#vision-mission">Vision</a></li>
           <li class="nav-item"><a href="#contact">Contact</a></li>
         </ul>
@@ -85,7 +84,6 @@
         <li><a href="#model-explorer" style="color:var(--accent-cyan); font-weight:600;"><span class="nav-3d-badge">3D</span> Interactive Model</a></li>
         <li><a href="#ecosystem">Smart Ecosystem</a></li>
         <li><a href="#demo">Live Console Simulator</a></li>
-        <li><a href="#calculator">ROI Calculator</a></li>
         <li><a href="#vision-mission">Vision & Mission</a></li>
         <li><a href="#contact">Contact & Inquiry</a></li>
       </ul>
@@ -889,8 +887,8 @@
               </p>
             </div>
             <div class="two-pond-header-actions">
-              <a href="#calculator" class="btn btn-cyan">
-                <span>Calculate Your Farm Savings</span>
+              <a href="#contact" class="btn btn-cyan">
+                <span>Request Farm Assessment</span>
                 <svg class="btn-icon" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
@@ -1228,97 +1226,6 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         FARMER ROI & FEED SAVINGS CALCULATOR
-         ========================================================================== -->
-    <section class="roi-section" id="calculator">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Economics & Impact</span>
-          <h2>Calculate Your Farm ROI With Zynaq.Aqua</h2>
-          <p>
-            See how much your aquaculture operation will save each year by eliminating overfeeding, reducing mortality risks, and automating physical pond labor.
-          </p>
-        </div>
-
-        <div class="calculator-wrapper">
-          <!-- Inputs Column -->
-          <div class="calc-inputs-col">
-            <!-- Currency Toggle -->
-            <div class="currency-toggle-group">
-              <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 600;">Currency:</span>
-              <button class="currency-btn active" id="currInrBtn">₹ INR (Indian Rupee)</button>
-              <button class="currency-btn" id="currUsdBtn">$ USD</button>
-            </div>
-
-            <!-- Number of Ponds Slider -->
-            <div class="calc-input-group">
-              <div class="calc-label-row">
-                <label for="calcPondsInput" class="calc-label">Total Number of Ponds</label>
-                <span class="calc-live-value" id="calcPondsDisplay">6 Ponds</span>
-              </div>
-              <input type="range" id="calcPondsInput" class="range-slider" min="1" max="50" value="6" step="1">
-              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted);">
-                <span>1 Pond</span>
-                <span>25 Ponds</span>
-                <span>50 Ponds</span>
-              </div>
-            </div>
-
-            <!-- Monthly Feed Cost Slider -->
-            <div class="calc-input-group">
-              <div class="calc-label-row">
-                <label for="calcFeedCostInput" class="calc-label">Monthly Farm Feed Expenditure</label>
-                <span class="calc-live-value" id="calcFeedCostDisplay">₹2,40,000</span>
-              </div>
-              <input type="range" id="calcFeedCostInput" class="range-slider" min="25000" max="1500000" value="240000" step="25000">
-              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted);">
-                <span>₹25,000</span>
-                <span>₹7,50,000</span>
-                <span>₹15,00,000</span>
-              </div>
-            </div>
-
-            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
-              * Calculations based on field data across tropical fish and shrimp ponds with an average 18.5% feed wastage reduction, labor reduction of 24 hrs/month per pond, and FCR optimization.
-            </p>
-          </div>
-
-          <!-- Dynamic Output Results Column -->
-          <div class="calc-results-box">
-            <div class="results-header">Estimated Annual Savings</div>
-            <div class="savings-headline" id="calcAnnualSavingsDisplay">₹5,32,800</div>
-            <div class="savings-sub">Direct feed cost saved per year across your ponds</div>
-
-            <div class="roi-metrics-grid">
-              <div class="roi-metric-item">
-                <span class="roi-metric-label">Manual Labor Saved</span>
-                <div class="roi-metric-val" id="calcLaborHoursDisplay">144 hrs / mo</div>
-              </div>
-              <div class="roi-metric-item">
-                <span class="roi-metric-label">FCR Efficiency Gain</span>
-                <div class="roi-metric-val" id="calcFcrDisplay">-0.26 FCR</div>
-              </div>
-              <div class="roi-metric-item">
-                <span class="roi-metric-label">Estimated Payback</span>
-                <div class="roi-metric-val" id="calcPaybackDisplay">5.8 Months</div>
-              </div>
-              <div class="roi-metric-item">
-                <span class="roi-metric-label">Mortality Risk Drop</span>
-                <div class="roi-metric-val" style="color:var(--brand-green);">Significant</div>
-              </div>
-            </div>
-
-            <a href="#contact" class="btn btn-primary" style="width: 100%;">
-              <span>Request Custom Farm ROI Assessment</span>
-              <svg class="btn-icon" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ==========================================================================
          VISION & MISSION
@@ -1567,7 +1474,6 @@
             <li><a href="#finfloat">FinFloat Innovation</a></li>
             <li><a href="#ecosystem">Smart Ecosystem</a></li>
             <li><a href="#demo">Live Console Simulator</a></li>
-            <li><a href="#calculator">ROI Calculator</a></li>
           </ul>
         </div>
 

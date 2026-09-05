@@ -1916,175 +1916,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
 }
 
-/* ==========================================================================
-   FARMER ROI & IMPACT CALCULATOR
-   ========================================================================== */
 
-.roi-section {
-  padding: 120px 0;
-  position: relative;
-}
-
-.calculator-wrapper {
-  background: var(--bg-card);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-lg);
-  padding: 48px;
-  backdrop-filter: var(--glass-blur);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: center;
-  box-shadow: var(--shadow-card);
-}
-
-.calc-inputs-col {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.calc-input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.calc-label-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.calc-label {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text-bright);
-}
-
-.calc-live-value {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--brand-green);
-  font-size: 1.1rem;
-}
-
-.range-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 8px;
-  border-radius: 4px;
-  background: var(--bg-surface-elevated);
-  outline: none;
-  border: 1px solid var(--border-subtle);
-  cursor: pointer;
-}
-
-.range-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--brand-green);
-  cursor: pointer;
-  box-shadow: 0 0 12px var(--brand-green);
-  border: 2px solid #ffffff;
-  transition: transform var(--transition-fast);
-}
-
-.range-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
-}
-
-.currency-toggle-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: -10px;
-}
-
-.currency-btn {
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.currency-btn.active {
-  background: var(--brand-green-subtle);
-  border-color: var(--brand-green);
-  color: var(--brand-green);
-}
-
-/* Calculator Results Box */
-.calc-results-box {
-  background: linear-gradient(135deg, rgba(16, 23, 34, 0.95) 0%, rgba(21, 30, 44, 0.95) 100%);
-  border: 1px solid var(--brand-green-border);
-  border-radius: var(--radius-lg);
-  padding: 36px;
-  position: relative;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), var(--shadow-glow);
-}
-
-.results-header {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.savings-headline {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--brand-green);
-  margin-bottom: 4px;
-  line-height: 1;
-}
-
-.savings-sub {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 28px;
-}
-
-.roi-metrics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 30px;
-}
-
-.roi-metric-item {
-  background: rgba(6, 9, 14, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 16px;
-}
-
-.roi-metric-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  display: block;
-}
-
-.roi-metric-val {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #fff;
-  font-family: var(--font-mono);
-}
 
 /* ==========================================================================
    VISION, MISSION & ABOUT
@@ -2545,10 +2377,7 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .calculator-wrapper {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+
 
   .specs-card-container {
     grid-template-columns: repeat(2, 1fr);
@@ -3438,11 +3267,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 16px;
   }
 
-  /* ROI Calculator */
-  .calculator-wrapper {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
+
 
   /* About & Vision */
   .kerala-roots-card {
@@ -3511,10 +3336,21 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 16px;
   }
 
-  /* Hero Section - Optimized Viewport Height & Spacing */
+  /* Hero Section - Full-Screen View for Mobile */
   .hero-section {
-    padding: calc(var(--header-height, 64px) + 20px) 0 24px;
-    min-height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: calc(var(--header-height, 64px) + 24px) 0 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-sizing: border-box;
+  }
+
+  .hero-container {
+    width: 100%;
+    position: relative;
+    z-index: 2;
   }
 
   .hero-title {
@@ -3542,20 +3378,48 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
   }
 
+  .hero-cover-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-darkest);
+  }
+
+  .hero-cover-picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+
   .hero-cover-media {
-    object-position: center 62%;
+    width: 100%;
+    height: 100%;
+    object-position: center top;
+    object-fit: contain;
+    transform: none !important;
+    display: block;
+  }
+
+  .hero-section:hover .hero-cover-media {
+    transform: none !important;
   }
 
   .hero-cover-scrim {
+    position: absolute;
+    inset: 0;
     background: linear-gradient(
       180deg,
-      rgba(6, 9, 14, 0.92) 0%,
-      rgba(6, 9, 14, 0.82) 28%,
-      rgba(6, 9, 14, 0.42) 46%,
-      rgba(6, 9, 14, 0.06) 58%,
-      transparent 70%,
-      rgba(6, 9, 14, 0.5) 86%,
-      rgba(6, 9, 14, 0.95) 100%
+      rgba(6, 9, 14, 0.45) 0%,
+      transparent 20%,
+      transparent 40%,
+      rgba(6, 9, 14, 0.6) 52%,
+      rgba(6, 9, 14, 0.88) 66%,
+      var(--bg-darkest) 80%,
+      var(--bg-darkest) 100%
     );
   }
 
@@ -4141,26 +4005,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 12px 16px;
   }
 
-  /* ROI Calculator */
-  .calc-results-box {
-    padding: 22px 16px;
-  }
 
-  .savings-headline {
-    font-size: clamp(2rem, 7vw, 2.4rem);
-  }
-
-  .roi-metrics-grid {
-    gap: 10px;
-  }
-
-  .roi-metric-item {
-    padding: 12px;
-  }
-
-  .roi-metric-val {
-    font-size: 1.1rem;
-  }
 
   /* Vision & Mission */
   .vision-mission-grid {
@@ -4197,7 +4042,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-section {
-    padding: 68px 0 20px;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: calc(var(--header-height, 64px) + 16px) 0 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .hero-badge {
@@ -4241,7 +4091,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-cover-media {
-    object-position: center 60%;
+    object-position: center top;
+    object-fit: contain;
+    transform: none !important;
   }
 
   .two-pond-title {
@@ -4313,10 +4165,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.72rem;
   }
 
-  .roi-metrics-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
+
 
   .section-header h2 {
     font-size: 1.65rem;
@@ -4334,6 +4183,15 @@ h1, h2, h3, h4, h5, h6 {
   .brand-logo-img {
     height: 34px;
     max-width: 135px;
+  }
+
+  .hero-section {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: calc(var(--header-height, 64px) + 12px) 0 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .hero-title {
