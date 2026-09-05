@@ -14,8 +14,9 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/zynak-hero-cover.jpg">
 
-  <!-- Preload Cinematic Hero Cover Image -->
-  <link rel="preload" as="image" href="assets/zynak-hero-cover.jpg" fetchpriority="high">
+  <!-- Preload Cinematic Hero Cover Images (Responsive Viewport Tailored) -->
+  <link rel="preload" as="image" href="assets/zynak-hero-cover.jpg" media="(min-width: 769px) and (orientation: landscape)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/zynak-hero-cover-mobile.jpg" media="(max-width: 768px), (max-width: 1024px) and (orientation: portrait)" fetchpriority="high">
 
   <!-- Google Fonts: Outfit (Display) & Plus Jakarta Sans (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,6 +75,10 @@
 
     <!-- Mobile Drawer Navigation -->
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <div class="mobile-drawer-header">
+        <img src="assets/zynaq-logo-transparent.png" alt="Zynaq.Aqua" class="mobile-drawer-logo" width="140" height="38">
+        <span class="mobile-drawer-tag">Engineering Intelligence</span>
+      </div>
       <ul class="mobile-nav-list">
         <li><a href="#overview">Overview</a></li>
         <li><a href="#finfloat">FinFloat Innovation</a></li>
@@ -101,17 +106,24 @@
          HERO SECTION
          ========================================================================== -->
     <section class="hero-section hero-cinematic-cover" id="hero">
-      <!-- High-Resolution Photorealistic Cinematic Cover Background -->
+      <!-- High-Resolution Responsive Cinematic Cover Background -->
       <div class="hero-cover-backdrop" aria-hidden="true">
-        <img 
-          src="assets/zynak-hero-cover.jpg" 
-          alt="Zynaq FinFloat autonomous aquatic edge buoy floating in a tranquil Kerala morning pond" 
-          class="hero-cover-media" 
-          width="1920" 
-          height="1080"
-          fetchpriority="high"
-        >
-        <!-- Directional negative-space scrim for pristine text readability on left -->
+        <picture class="hero-cover-picture">
+          <!-- Portrait Viewports: Optimized vertical framing for tablets and mobile devices -->
+          <source media="(max-width: 1024px) and (orientation: portrait)" srcset="assets/zynak-hero-cover-mobile.jpg">
+          <!-- Mobile Viewports (all orientations up to 768px) -->
+          <source media="(max-width: 768px)" srcset="assets/zynak-hero-cover-mobile.jpg">
+          <!-- Desktop & Landscape Widescreen Default -->
+          <img 
+            src="assets/zynak-hero-cover.jpg" 
+            alt="Zynaq FinFloat autonomous aquatic edge buoy floating in a tranquil Kerala morning pond" 
+            class="hero-cover-media" 
+            width="1920" 
+            height="1080"
+            fetchpriority="high"
+          >
+        </picture>
+        <!-- Directional negative-space scrim for pristine text readability -->
         <div class="hero-cover-scrim"></div>
         <!-- Ambient cinematic radial vignette -->
         <div class="hero-cover-vignette"></div>
@@ -259,7 +271,11 @@
           <!-- FinFloat Visual Media -->
           <div class="finfloat-media-col">
             <div class="finfloat-media-card">
-              <img src="assets/finfloat-feature.jpg" alt="FinFloat Hydrodynamic Twin-Pontoon Autonomous Device (1350 mm × 650 mm) with Integrated Solar Array and Rear Telemetry Tower" loading="lazy">
+              <img src="assets/finfloat-feature.jpg" alt="FinFloat Hydrodynamic Twin-Pontoon Autonomous Device (1350 mm × 650 mm) with Integrated Solar Array and Rear Telemetry Tower" loading="lazy" width="1376" height="768">
+              <div class="finfloat-media-badge">
+                <span class="finfloat-badge-dot"></span>
+                <span>Production Device • 1350 mm × 650 mm Twin-Pontoon</span>
+              </div>
             </div>
           </div>
 
@@ -864,21 +880,201 @@
           </div>
         </div>
 
-        <!-- Ecosystem Aerial Feature Banner -->
-        <div class="ecosystem-banner">
-          <img src="assets/smart-aquafarm.jpg" alt="Zynaq.Aqua Smart Aquaculture Farm in Kerala with Deployed FinFloat Twin-Pontoon Devices" class="ecosystem-banner-img" loading="lazy">
-          <div class="ecosystem-banner-content">
-            <span class="section-tag">Field-Tested Architecture</span>
-            <h3>Scalable for Smallholders and Commercial Estates Alike</h3>
-            <p>
-              Whether operating a 2-pond inland farm or a 50-pond coastal shrimp cluster in Kerala, Zynaq.Aqua's distributed architecture adapts seamlessly to your water geography.
-            </p>
-            <a href="#calculator" class="btn btn-cyan" style="align-self: flex-start;">
-              <span>Calculate Your Farm Savings</span>
-              <svg class="btn-icon" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
+        <!-- Ecosystem Aerial Feature Showcase: Precision Two-Pond Commercial Cluster -->
+        <div class="ecosystem-two-pond-showcase" id="ecosystemTwoPond">
+          <!-- Section Architecture Header -->
+          <div class="two-pond-header">
+            <div class="two-pond-header-info">
+              <span class="section-tag cyan">Field-Tested Architecture</span>
+              <h3 class="two-pond-title">Scalable for Smallholders and Commercial Estates Alike</h3>
+              <p class="two-pond-subtitle">
+                Engineered around precisely balanced twin-pond commercial modules. A centralized operations and resource shed bridges two large-scale aquaculture ponds, each monitored and aerated autonomously by its dedicated FinFloat™ edge buoy.
+              </p>
+            </div>
+            <div class="two-pond-header-actions">
+              <a href="#calculator" class="btn btn-cyan">
+                <span>Calculate Your Farm Savings</span>
+                <svg class="btn-icon" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Aerial Drone Interactive Dual-Pond Stage -->
+          <div class="two-pond-stage">
+            <!-- Aerial Canvas Frame with Natural Daylight Color Temperature -->
+            <div class="two-pond-media-frame">
+              <img 
+                src="assets/smart-aquafarm-twopond.jpg" 
+                alt="Zynaq.Aqua precision two-pond commercial layout with symmetrical central operations shed and twin FinFloat autonomous buoys under natural daylight" 
+                class="two-pond-img" 
+                loading="lazy"
+                width="1920"
+                height="1080"
+              >
+              <!-- Cool-Neutral Edge Scrim & Vignette -->
+              <div class="two-pond-cool-overlay"></div>
+
+              <!-- Top Telemetry Ribbon -->
+              <div class="two-pond-telemetry-ribbon">
+                <div class="ribbon-item">
+                  <span class="ribbon-dot live"></span>
+                  <span class="ribbon-label">Layout:</span>
+                  <strong class="ribbon-value">2 Large-Scale Ponds</strong>
+                </div>
+                <div class="ribbon-item">
+                  <span class="ribbon-label">Deployments:</span>
+                  <strong class="ribbon-value">1 FinFloat™ Per Pond</strong>
+                </div>
+                <div class="ribbon-item">
+                  <span class="ribbon-label">Command:</span>
+                  <strong class="ribbon-value">Symmetrical Central Shed</strong>
+                </div>
+                <div class="ribbon-item">
+                  <span class="ribbon-label">Lighting:</span>
+                  <strong class="ribbon-value">Natural Cool Daylight Telemetry</strong>
+                </div>
+              </div>
+
+              <!-- Mobile Touch Instruction Cue -->
+              <div class="hotspot-mobile-cue">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>Tap hotspots to inspect telemetry</span>
+              </div>
+
+              <!-- Interactive HUD Hotspot 1: Pond Alpha (Left Pond) -->
+              <div class="pond-hotspot hotspot-pond-a" style="left: 28%; top: 62%;">
+                <div class="hotspot-pulse"></div>
+                <div class="hotspot-pin">
+                  <span class="pin-badge">Pond Alpha</span>
+                </div>
+                <div class="hotspot-card">
+                  <button class="hotspot-close-btn" type="button" aria-label="Close telemetry card">&times;</button>
+                  <div class="hotspot-header">
+                    <span class="hotspot-type">Large-Scale Pond 01</span>
+                    <span class="hotspot-status live">Active Telemetry</span>
+                  </div>
+                  <strong class="hotspot-name">FinFloat™ Edge Unit #01</strong>
+                  <div class="hotspot-metrics">
+                    <div class="hotspot-metric">
+                      <span>Dissolved Oxygen</span>
+                      <strong>6.8 mg/L</strong>
+                    </div>
+                    <div class="hotspot-metric">
+                      <span>Water Temp</span>
+                      <strong>27.8 °C</strong>
+                    </div>
+                  </div>
+                  <span class="hotspot-footer">Autonomous Precision Aeration & Feeding</span>
+                </div>
+              </div>
+
+              <!-- Interactive HUD Hotspot 2: Central Operations Shed (Symmetrical Center) -->
+              <div class="pond-hotspot hotspot-central-shed" style="left: 50%; top: 46%;">
+                <div class="hotspot-pulse hub"></div>
+                <div class="hotspot-pin hub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                  <span class="pin-badge">Central Operations</span>
+                </div>
+                <div class="hotspot-card">
+                  <button class="hotspot-close-btn" type="button" aria-label="Close telemetry card">&times;</button>
+                  <div class="hotspot-header">
+                    <span class="hotspot-type">Operations & Infrastructure</span>
+                    <span class="hotspot-status hub">Symmetrical Center</span>
+                  </div>
+                  <strong class="hotspot-name">Centralized Resource Shed</strong>
+                  <p class="hotspot-hub-desc">
+                    Positioned symmetrically between both large ponds. Houses edge compute gateway, solar microgrid battery bank, and centralized automated feed replenishment.
+                  </p>
+                  <div class="hotspot-tags">
+                    <span>LoRaWAN Mesh Hub</span>
+                    <span>Solar Microgrid</span>
+                    <span>Zero Transit Loss</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive HUD Hotspot 3: Pond Beta (Right Pond) -->
+              <div class="pond-hotspot hotspot-pond-b" style="left: 71%; top: 62%;">
+                <div class="hotspot-pulse"></div>
+                <div class="hotspot-pin">
+                  <span class="pin-badge">Pond Beta</span>
+                </div>
+                <div class="hotspot-card">
+                  <button class="hotspot-close-btn" type="button" aria-label="Close telemetry card">&times;</button>
+                  <div class="hotspot-header">
+                    <span class="hotspot-type">Large-Scale Pond 02</span>
+                    <span class="hotspot-status live">Active Telemetry</span>
+                  </div>
+                  <strong class="hotspot-name">FinFloat™ Edge Unit #02</strong>
+                  <div class="hotspot-metrics">
+                    <div class="hotspot-metric">
+                      <span>Dissolved Oxygen</span>
+                      <strong>6.7 mg/L</strong>
+                    </div>
+                    <div class="hotspot-metric">
+                      <span>Water Temp</span>
+                      <strong>28.1 °C</strong>
+                    </div>
+                  </div>
+                  <span class="hotspot-footer">Synchronized Feeding Schedule</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Engineering Architecture Feature Cards (Below Stage) -->
+            <div class="two-pond-spec-grid">
+              <!-- Feature 1: Large Pond A -->
+              <div class="two-pond-spec-card">
+                <div class="spec-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  </svg>
+                </div>
+                <div class="spec-card-content">
+                  <div class="spec-badge">Pond Alpha • Left Sector</div>
+                  <h4>Large Commercial Pond 01</h4>
+                  <p>Dedicated FinFloat™ buoy provides continuous real-time optical DO profiling and autonomous micro-pellet dispersal tailored to biomass density.</p>
+                </div>
+              </div>
+
+              <!-- Feature 2: Symmetrical Central Shed -->
+              <div class="two-pond-spec-card highlight">
+                <div class="spec-card-icon hub">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                </div>
+                <div class="spec-card-content">
+                  <div class="spec-badge hub">Centralized Symmetrical Hub</div>
+                  <h4>Central Resource & Operations Shed</h4>
+                  <p>Equidistant placement between twin ponds halves maintenance transit times, consolidates solar power reserves, and centralizes edge IoT mesh telemetry.</p>
+                </div>
+              </div>
+
+              <!-- Feature 3: Large Pond B -->
+              <div class="two-pond-spec-card">
+                <div class="spec-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  </svg>
+                </div>
+                <div class="spec-card-content">
+                  <div class="spec-badge">Pond Beta • Right Sector</div>
+                  <h4>Large Commercial Pond 02</h4>
+                  <p>Synchronized FinFloat™ unit operates in lockstep with the farm intelligence model, eliminating feed spikes and preventing pond-to-pond oxygen crashes.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

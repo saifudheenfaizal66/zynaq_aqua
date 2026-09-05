@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initTelemetryTicker();
   init3DStudio();
+  initEcosystemHotspots();
 });
 
 /* ==========================================================================
@@ -738,5 +739,66 @@ function init3DStudio() {
 
   // Set initial frame
   setFrame(0, true);
+}
+
+/* ==========================================================================
+   9. ECOSYSTEM TWO-POND INTERACTIVE HOTSPOTS
+   ========================================================================== */
+
+function initEcosystemHotspots() {
+  const hotspots = document.querySelectorAll('.pond-hotspot');
+  if (!hotspots || hotspots.length === 0) return;
+
+  hotspots.forEach(hotspot => {
+    // Accessibility keyboard focus support
+    hotspot.setAttribute('tabindex', '0');
+    hotspot.setAttribute('role', 'button');
+    hotspot.setAttribute('aria-expanded', 'false');
+
+    const toggleHotspot = (e) => {
+      e.stopPropagation();
+      const isActive = hotspot.classList.contains('active');
+      
+      // Close other hotspots
+      hotspots.forEach(h => {
+        h.classList.remove('active');
+        h.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isActive) {
+        hotspot.classList.add('active');
+        hotspot.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    hotspot.addEventListener('click', toggleHotspot);
+    hotspot.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleHotspot(e);
+      }
+    });
+  });
+
+  // Handle close buttons inside cards (especially for mobile touch)
+  const closeBtns = document.querySelectorAll('.hotspot-close-btn');
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const parentHotspot = btn.closest('.pond-hotspot');
+      if (parentHotspot) {
+        parentHotspot.classList.remove('active');
+        parentHotspot.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Close hotspots when clicking outside
+  document.addEventListener('click', () => {
+    hotspots.forEach(h => {
+      h.classList.remove('active');
+      h.setAttribute('aria-expanded', 'false');
+    });
+  });
 }
 

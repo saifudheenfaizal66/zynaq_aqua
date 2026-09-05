@@ -455,6 +455,14 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+.hero-cover-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
 .hero-cover-media {
   width: 100%;
   height: 100%;
@@ -702,6 +710,36 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
+   MOBILE NAVIGATION DRAWER HEADER & BRANDING
+   ========================================================================== */
+
+.mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mobile-drawer-logo {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+}
+
+.mobile-drawer-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--brand-green);
+  background: rgba(0, 230, 118, 0.1);
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
    FLAGSHIP INNOVATION: FINFLOAT
    ========================================================================== */
 
@@ -734,8 +772,42 @@ h1, h2, h3, h4, h5, h6 {
 
 .finfloat-media-card img {
   width: 100%;
-  height: 480px;
+  aspect-ratio: 16 / 10;
+  max-height: 480px;
+  height: auto;
   object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* FinFloat Media Card Overlay Badge */
+.finfloat-media-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: rgba(8, 14, 24, 0.88);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.finfloat-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  box-shadow: 0 0 8px var(--brand-green);
+  flex-shrink: 0;
 }
 
 /* Interactive Tabs for FinFloat Modes */
@@ -981,41 +1053,466 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
 }
 
-/* Ecosystem Banner with Smart Aqua-Farm Drone Shot */
-.ecosystem-banner {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-  border: 1px solid var(--border-medium);
-  margin-top: 40px;
-}
+/* ==========================================================================
+   ECOSYSTEM FEATURE SHOWCASE: PRECISION TWO-POND COMMERCIAL ARCHITECTURE
+   (Cool-Neutral Daylight Palette & Symmetrical Operations Hub)
+   ========================================================================== */
 
-.ecosystem-banner-img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-}
-
-.ecosystem-banner-content {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(6, 9, 14, 0.92) 0%, rgba(6, 9, 14, 0.6) 50%, transparent 100%);
+.ecosystem-two-pond-showcase {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 50px;
-  max-width: 650px;
+  gap: 28px;
 }
 
-.ecosystem-banner-content h3 {
-  font-size: 2rem;
-  margin-bottom: 14px;
+/* Header & Architecture Context */
+.two-pond-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
 }
 
-.ecosystem-banner-content p {
+.two-pond-header-info {
+  max-width: 740px;
+}
+
+.two-pond-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  margin-top: 10px;
+  margin-bottom: 12px;
+  letter-spacing: -0.4px;
+}
+
+.two-pond-subtitle {
   color: var(--text-secondary);
   font-size: 1.05rem;
-  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.two-pond-header-actions {
+  flex-shrink: 0;
+}
+
+/* Interactive Aerial Stage Frame */
+.two-pond-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.two-pond-media-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: auto;
+  max-height: 640px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.08);
+  background: #080d15;
+}
+
+.two-pond-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  filter: contrast(1.02) brightness(0.99);
+  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.two-pond-media-frame:hover .two-pond-img {
+  transform: scale(1.015);
+}
+
+/* Cool-Neutral Daylight Peripheral Scrim */
+.two-pond-cool-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(6, 12, 20, 0.45) 85%, rgba(6, 12, 20, 0.82) 100%),
+    linear-gradient(180deg, rgba(6, 12, 20, 0.6) 0%, transparent 16%, transparent 84%, rgba(6, 12, 20, 0.7) 100%);
+}
+
+/* Top Telemetry Info Ribbon */
+.two-pond-telemetry-ribbon {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: rgba(8, 14, 24, 0.82);
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  backdrop-filter: var(--glass-blur);
+  z-index: 5;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+.ribbon-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.ribbon-dot.live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--brand-green);
+  box-shadow: 0 0 8px var(--brand-green);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.ribbon-label {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ribbon-value {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Interactive Pond & Central Hub Hotspots */
+.pond-hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  cursor: pointer;
+}
+
+.hotspot-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid var(--accent-cyan);
+  animation: hotspotRipple 2.2s infinite ease-out;
+  pointer-events: none;
+}
+
+.hotspot-pulse.hub {
+  border-color: var(--brand-green);
+}
+
+@keyframes hotspotRipple {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+}
+
+.hotspot-pin {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(8, 14, 24, 0.92);
+  border: 1px solid var(--accent-cyan);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 14px rgba(0, 240, 255, 0.35);
+  transition: all var(--transition-normal);
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  backdrop-filter: var(--glass-blur);
+  white-space: nowrap;
+}
+
+.hotspot-pin.hub {
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 14px rgba(0, 230, 118, 0.35);
+}
+
+.hotspot-pin:hover,
+.pond-hotspot:hover .hotspot-pin {
+  transform: scale(1.08);
+  background: rgba(14, 24, 40, 0.96);
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Floating Hotspot Telemetry Card */
+.hotspot-card {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 270px;
+  background: rgba(10, 16, 26, 0.95);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15);
+  backdrop-filter: var(--glass-blur);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all var(--transition-normal);
+  z-index: 10;
+}
+
+.hotspot-card::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(10, 16, 26, 0.95);
+}
+
+.pond-hotspot:hover .hotspot-card,
+.pond-hotspot:focus-within .hotspot-card,
+.pond-hotspot.active .hotspot-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.hotspot-close-btn {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: all var(--transition-fast);
+}
+
+.hotspot-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.hotspot-mobile-cue {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.hotspot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+.hotspot-type {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+}
+
+.hotspot-status {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hotspot-status.live {
+  background: rgba(0, 230, 118, 0.15);
+  color: var(--brand-green);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.hotspot-status.hub {
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.hotspot-name {
+  display: block;
+  font-size: 0.96rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.hotspot-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+
+.hotspot-metric span {
+  font-size: 0.66rem;
+  color: var(--text-secondary);
+  display: block;
+  text-transform: uppercase;
+}
+
+.hotspot-metric strong {
+  font-size: 0.88rem;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+}
+
+.hotspot-footer {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  display: block;
+  line-height: 1.4;
+}
+
+.hotspot-hub-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.hotspot-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hotspot-tags span {
+  font-size: 0.66rem;
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: #e2e8f0;
+}
+
+/* Symmetrical Architectural Spec Cards Below Stage */
+.two-pond-spec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 20px;
+}
+
+.two-pond-spec-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  gap: 18px;
+  transition: all var(--transition-normal);
+}
+
+.two-pond-spec-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 240, 255, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: var(--bg-surface-elevated);
+}
+
+.two-pond-spec-card.highlight {
+  border-color: rgba(0, 230, 118, 0.3);
+  background: linear-gradient(180deg, rgba(16, 26, 38, 0.85) 0%, rgba(12, 19, 29, 0.9) 100%);
+}
+
+.two-pond-spec-card.highlight:hover {
+  border-color: var(--brand-green);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 230, 118, 0.15);
+}
+
+.spec-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.spec-card-icon.hub {
+  background: rgba(0, 230, 118, 0.12);
+  border-color: rgba(0, 230, 118, 0.3);
+  color: var(--brand-green);
+}
+
+.spec-card-content {
+  flex: 1;
+}
+
+.spec-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.spec-badge.hub {
+  color: var(--brand-green);
+}
+
+.spec-card-content h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.spec-card-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -2230,6 +2727,9 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   cursor: grab;
   position: relative;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .turntable-canvas-wrapper:active {
@@ -2668,90 +3168,84 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-/* Media Queries for 3D Studio */
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM: TABLET & MOBILE VIEWPORTS
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TABLET VIEWPORTS (max-width: 1040px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1040px) {
-  .studio-workspace-grid {
+  /* Layout & Navigation */
+  .container {
+    padding: 0 20px;
+  }
+
+  .nav-links,
+  .nav-contact-btn {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .mobile-nav-drawer {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    max-height: calc(100svh - 80px);
+    overflow-y: auto;
+    background: rgba(6, 9, 14, 0.98);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--border-medium);
+    padding: 24px 20px 30px;
+    z-index: 999;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  }
+
+  .mobile-nav-drawer.open {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 120px 0 60px;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-cover-layout {
     grid-template-columns: 1fr;
     gap: 32px;
   }
 
-  .viewport-screen-container {
-    height: 420px;
-  }
-}
-
-@media (max-width: 768px) {
-  .viewport-screen-container {
-    height: 340px;
+  .hero-text-col {
+    max-width: 720px;
+    margin: 0 auto;
   }
 
-  .viewport-top-bar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .slider-track-box {
-    width: 100%;
-    order: 3;
-  }
-
-  .controls-subbar {
-    gap: 12px;
-  }
-
-  .hero-3d-jump-badge {
-    bottom: 16px;
-    right: 16px;
-    padding: 8px 12px;
-  }
-
-  .badge-cube-icon {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-/* ==========================================================================
-   RESPONSIVE OPTIMIZATION: CINEMATIC HERO COVER
-   ========================================================================== */
-
-@media (max-width: 1120px) {
-  .hero-cover-layout {
-    grid-template-columns: 1.22fr 0.78fr;
-    gap: 30px;
-  }
   .hero-cover-media {
-    object-position: 80% 45%;
+    object-position: center 54%;
   }
-  .hero-device-hud-col {
-    min-height: 400px;
-  }
-}
 
-@media (max-width: 960px) {
-  .hero-section {
-    padding: 130px 0 70px;
-    min-height: auto;
-  }
-  .hero-cover-media {
-    object-position: 72% 38%;
-  }
   .hero-cover-scrim {
     background: linear-gradient(
       180deg,
-      rgba(6, 9, 14, 0.94) 0%,
-      rgba(6, 9, 14, 0.88) 42%,
-      rgba(6, 9, 14, 0.65) 68%,
-      rgba(6, 9, 14, 0.95) 100%
+      rgba(6, 9, 14, 0.88) 0%,
+      rgba(6, 9, 14, 0.80) 26%,
+      rgba(6, 9, 14, 0.42) 48%,
+      rgba(6, 9, 14, 0.12) 66%,
+      rgba(6, 9, 14, 0.58) 84%,
+      rgba(6, 9, 14, 0.96) 100%
     );
   }
-  .hero-cover-layout {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .hero-text-col {
-    max-width: 100%;
-  }
+
   .hero-device-hud-col {
     min-height: auto;
     flex-direction: row;
@@ -2759,44 +3253,586 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: flex-start;
     align-items: center;
     gap: 16px;
+    margin-top: 10px;
+  }
+
+  .hero-floating-telemetry,
+  .hero-3d-jump-badge {
+    flex: 1;
+    min-width: 240px;
+  }
+
+  /* FinFloat Section */
+  .finfloat-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .finfloat-media-card img {
+    aspect-ratio: 16 / 10;
+    max-height: 440px;
+  }
+
+  .specs-card-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Interactive 3D Studio */
+  .studio-workspace-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .viewport-screen-container {
+    height: 400px;
+  }
+
+  /* Ecosystem Two-Pond Stage */
+  .two-pond-media-frame {
+    aspect-ratio: 16 / 9;
+    min-height: auto;
+  }
+
+  .two-pond-telemetry-ribbon {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 8px 14px;
+    gap: 10px;
+  }
+
+  .two-pond-spec-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Simulator & Dashboard */
+  .telemetry-live-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* ROI Calculator */
+  .calculator-wrapper {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* About & Vision */
+  .kerala-roots-card {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact & Footer */
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 640px) {
+/* --------------------------------------------------------------------------
+   2. MOBILE VIEWPORTS (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Hero Section */
   .hero-section {
-    padding: 110px 0 60px;
+    padding: 100px 0 45px;
+    min-height: 100svh;
   }
+
   .hero-title {
-    font-size: 2.15rem;
+    font-size: clamp(2rem, 6.5vw, 2.45rem);
+    letter-spacing: -0.4px;
+    margin-bottom: 14px;
   }
+
   .hero-desc {
     font-size: 0.98rem;
-    line-height: 1.65;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    color: #e2e8f0;
   }
-  .hero-cta-group {
-    flex-direction: column;
-    width: 100%;
+
+  .hero-cover-media {
+    object-position: center 58%;
   }
-  .hero-cta-group .btn {
-    width: 100%;
-    justify-content: center;
-  }
+
   .hero-telemetry-strip {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding: 14px 16px;
+    gap: 10px;
+    padding: 12px 14px;
+    margin-bottom: 22px;
   }
+
   .ticker-item:nth-child(2) {
     border-right: none;
   }
+
+  .ticker-item:nth-child(3),
+  .ticker-item:nth-child(4) {
+    margin-top: 4px;
+  }
+
   .hero-device-hud-col {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
+
   .hero-floating-telemetry,
   .hero-3d-jump-badge {
     width: 100%;
     justify-content: center;
+  }
+
+  /* FinFloat Section */
+  .finfloat-section {
+    padding: 80px 0;
+  }
+
+  .finfloat-media-card img {
+    aspect-ratio: 16 / 9;
+    max-height: 320px;
+  }
+
+  .finfloat-media-badge {
+    font-size: 0.72rem;
+    padding: 6px 10px;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+  }
+
+  .finfloat-tabs-nav {
+    gap: 8px;
+    padding-bottom: 8px;
+  }
+
+  .finfloat-tab-btn {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  /* Interactive 3D Studio */
+  .model-explorer-section {
+    padding: 80px 0;
+  }
+
+  .viewport-screen-container {
+    height: 320px;
+  }
+
+  .viewport-top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .mode-switcher-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .mode-tab-btn {
+    justify-content: center;
+    font-size: 0.76rem;
+    padding: 8px 6px;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .mode-tab-btn svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  .viewport-status-tag {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.72rem;
+    padding: 5px 10px;
+  }
+
+  .studio-controls-toolbar {
+    padding: 12px;
+  }
+
+  .controls-subbar {
+    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .playback-btn-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .studio-ctrl-btn {
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  .slider-track-box {
+    width: 100%;
+    order: 3;
+    padding: 2px 0;
+  }
+
+  .preset-angle-pills {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    order: 2;
+  }
+
+  .preset-pill,
+  .preset-cad-pill {
+    padding: 6px 2px;
+    font-size: 0.72rem;
+    text-align: center;
+  }
+
+  .viewer-tip {
+    font-size: 0.68rem;
+    padding: 4px 8px;
+  }
+
+  /* Two-Pond Stage */
+  .two-pond-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .two-pond-header-actions {
+    width: 100%;
+  }
+
+  .two-pond-header-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .two-pond-media-frame {
+    aspect-ratio: 16 / 9;
+    min-height: auto;
+    border-radius: var(--radius-md);
+  }
+
+  .hotspot-mobile-cue {
+    display: flex;
+  }
+
+  .two-pond-telemetry-ribbon {
+    position: static;
+    margin-bottom: 8px;
+    border-radius: var(--radius-md);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 10px 12px;
+  }
+
+  .hotspot-pin {
+    padding: 4px 8px;
+    font-size: 0.68rem;
+    gap: 4px;
+  }
+
+  .pin-badge {
+    font-size: 0.66rem;
+  }
+
+  .hotspot-pulse {
+    width: 22px;
+    height: 22px;
+  }
+
+  .hotspot-close-btn {
+    display: flex;
+  }
+
+  .hotspot-card {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    width: calc(100vw - 32px);
+    max-width: 360px;
+    z-index: 100;
+    padding: 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .hotspot-card::after {
+    display: none;
+  }
+
+  .two-pond-spec-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .spec-card-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Ecosystem Flow & Simulator */
+  .ecosystem-flow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .terminal-header {
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .terminal-body {
+    padding: 16px 12px;
+  }
+
+  .telemetry-live-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .telemetry-card {
+    padding: 12px;
+  }
+
+  .sensor-val {
+    font-size: 1.65rem;
+  }
+
+  .sensor-unit {
+    font-size: 0.8rem;
+  }
+
+  .simulator-actions-bar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .feed-control-box {
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .feed-dispense-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* ROI Calculator */
+  .calc-results-box {
+    padding: 22px 16px;
+  }
+
+  .savings-headline {
+    font-size: clamp(2rem, 7vw, 2.4rem);
+  }
+
+  .roi-metrics-grid {
+    gap: 10px;
+  }
+
+  .roi-metric-item {
+    padding: 12px;
+  }
+
+  .roi-metric-val {
+    font-size: 1.1rem;
+  }
+
+  /* Vision & Mission */
+  .vision-mission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kerala-roots-card {
+    padding: 22px 16px;
+  }
+
+  /* Contact & Footer */
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. SMALL SMARTPHONE VIEWPORTS (max-width: 520px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 520px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  .hero-section {
+    padding: 88px 0 36px;
+  }
+
+  .hero-badge {
+    padding: 5px 12px;
+    font-size: 0.74rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+    line-height: 1.18;
+  }
+
+  .hero-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+  }
+
+  .hero-telemetry-strip {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .ticker-val {
+    font-size: 1.05rem;
+  }
+
+  .ticker-lbl {
+    font-size: 0.65rem;
+  }
+
+  .hero-cover-media {
+    object-position: center 60%;
+  }
+
+  .two-pond-title {
+    font-size: 1.6rem;
+  }
+
+  .two-pond-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .finfloat-media-card img {
+    aspect-ratio: 16 / 10;
+    max-height: 250px;
+  }
+
+  .specs-card-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .viewport-screen-container {
+    height: 280px;
+  }
+
+  .telemetry-live-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .roi-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .section-header h2 {
+    font-size: 1.65rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. ULTRA-COMPACT SCREENS (max-width: 380px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .brand-logo-img {
+    height: 34px;
+    max-width: 135px;
+  }
+
+  .hero-title {
+    font-size: 1.65rem;
+  }
+
+  .hero-telemetry-strip {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .ticker-item {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 6px;
+  }
+
+  .ticker-item:last-child {
+    border-bottom: none;
+  }
+
+  .mode-tab-btn {
+    font-size: 0.7rem;
+    padding: 6px 3px;
+  }
+
+  .mode-tab-btn span {
+    white-space: normal;
+    line-height: 1.15;
+  }
+
+  .preset-pill,
+  .preset-cad-pill {
+    font-size: 0.68rem;
+    padding: 5px 2px;
   }
 }
 
