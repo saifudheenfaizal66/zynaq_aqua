@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zynaq.Aqua Pvt. Ltd. | Engineering Intelligence for Modern Aquaculture</title>
+  <meta name="description" content="Zynaq.Aqua Pvt. Ltd. (Alappuzha, Kerala) engineers intelligent aquaculture robotics and IoT ecosystems. Discover FinFloat: real-time pond monitoring and autonomous precision feeding.">
+  <meta name="keywords" content="Zynaq Aqua, FinFloat, aquaculture automation, smart fish farming, shrimp farming Kerala, pond water monitoring, aquaculture robotics, IoT aquaculture, Alappuzha tech company">
+  <meta name="author" content="Zynaq.Aqua Pvt. Ltd.">
+
+  <!-- OpenGraph / Social Sharing -->
+  <meta property="og:title" content="Zynaq.Aqua | Engineering Intelligence for Modern Aquaculture">
+  <meta property="og:description" content="Autonomous feeding, real-time pond telemetry, and AI-driven aquaculture systems engineered in Alappuzha, Kerala.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/zynak-hero-cover.jpg">
+
+  <!-- Preload Cinematic Hero Cover Image -->
+  <link rel="preload" as="image" href="assets/zynak-hero-cover.jpg" fetchpriority="high">
+
+  <!-- Google Fonts: Outfit (Display) & Plus Jakarta Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="assets/zynaq-logo.jpg">
+
+  <!-- 3D Model Viewer Web Component -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SITE HEADER / NAVIGATION
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-inner">
+      <!-- Official Brand Logo -->
+      <a href="#hero" class="brand-logo-link" aria-label="Zynaq.Aqua Home">
+        <img src="assets/zynaq-logo-transparent.png" alt="Zynaq.Aqua - Engineering Intelligence" class="brand-logo-img" width="165" height="48">
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="#overview">Overview</a></li>
+          <li class="nav-item"><a href="#finfloat">FinFloat</a></li>
+          <li class="nav-item"><a href="#model-explorer" class="nav-link-3d"><span class="nav-3d-badge">3D</span> Model</a></li>
+          <li class="nav-item"><a href="#ecosystem">Ecosystem</a></li>
+          <li class="nav-item"><a href="#demo">Live Demo</a></li>
+          <li class="nav-item"><a href="#calculator">ROI Calc</a></li>
+          <li class="nav-item"><a href="#vision-mission">Vision</a></li>
+          <li class="nav-item"><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-sm nav-contact-btn">
+          <span>Schedule Demo</span>
+          <svg class="btn-icon" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <ul class="mobile-nav-list">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#finfloat">FinFloat Innovation</a></li>
+        <li><a href="#model-explorer" style="color:var(--accent-cyan); font-weight:600;"><span class="nav-3d-badge">3D</span> Interactive Model</a></li>
+        <li><a href="#ecosystem">Smart Ecosystem</a></li>
+        <li><a href="#demo">Live Console Simulator</a></li>
+        <li><a href="#calculator">ROI Calculator</a></li>
+        <li><a href="#vision-mission">Vision & Mission</a></li>
+        <li><a href="#contact">Contact & Inquiry</a></li>
+      </ul>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
+        <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">
+          <span>Schedule Farm Demo</span>
+          <svg class="btn-icon" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section class="hero-section hero-cinematic-cover" id="hero">
+      <!-- High-Resolution Photorealistic Cinematic Cover Background -->
+      <div class="hero-cover-backdrop" aria-hidden="true">
+        <img 
+          src="assets/zynak-hero-cover.jpg" 
+          alt="Zynaq FinFloat autonomous aquatic edge buoy floating in a tranquil Kerala morning pond" 
+          class="hero-cover-media" 
+          width="1920" 
+          height="1080"
+          fetchpriority="high"
+        >
+        <!-- Directional negative-space scrim for pristine text readability on left -->
+        <div class="hero-cover-scrim"></div>
+        <!-- Ambient cinematic radial vignette -->
+        <div class="hero-cover-vignette"></div>
+        <!-- Soft bottom transition into overview section -->
+        <div class="hero-cover-fade-bottom"></div>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-cover-layout">
+          <!-- Left Content Column: Designed directly for the clean negative space -->
+          <div class="hero-text-col">
+            <div class="hero-badge-container">
+              <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                <span>Autonomous Aquatic Edge Buoy • Model 360</span>
+              </div>
+            </div>
+
+            <h1 class="hero-title">
+              Engineering <span class="green-text">Intelligence</span> for Modern Aquaculture
+            </h1>
+
+            <p class="hero-desc">
+              Based in Alappuzha, Kerala, <strong>Zynaq.Aqua Pvt. Ltd.</strong> converges autonomous robotics, precision IoT sensors, edge computing, and artificial intelligence into a cohesive smart ecosystem that maximizes farm productivity and eliminates manual guesswork.
+            </p>
+
+            <!-- Navigation & Call-to-Action Buttons -->
+            <div class="hero-cta-group">
+              <a href="#finfloat" class="btn btn-primary" id="heroCtaFinFloat">
+                <span>Discover FinFloat</span>
+                <svg class="btn-icon" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a href="#model-explorer" class="btn btn-secondary btn-hero-3d" id="heroCta3D">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+                <span>Interactive 3D Studio</span>
+              </a>
+              <a href="#demo" class="btn btn-secondary" id="heroCtaSimulator">
+                <span>Live Simulator</span>
+                <svg class="btn-icon" viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Live Telemetry Mini-Strip -->
+            <div class="hero-telemetry-strip" id="heroTelemetryStrip">
+              <div class="ticker-item">
+                <span class="ticker-label">Dissolved Oxygen</span>
+                <div class="ticker-value" id="heroTickerDO">6.4 <span>mg/L</span></div>
+              </div>
+              <div class="ticker-item">
+                <span class="ticker-label">Water Temp</span>
+                <div class="ticker-value" id="heroTickerTemp">28.2 <span>°C</span></div>
+              </div>
+              <div class="ticker-item">
+                <span class="ticker-label">pH Index</span>
+                <div class="ticker-value" id="heroTickerPH">7.82 <span>pH</span></div>
+              </div>
+              <div class="ticker-item">
+                <span class="ticker-label">Feed Saved</span>
+                <div class="ticker-value">18.5 <span>%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Hardware Telemetry Overlay on Buoy side -->
+          <div class="hero-device-hud-col" aria-label="FinFloat Buoy Live Status">
+            <!-- Floating Telemetry Badge -->
+            <div class="floating-telemetry-badge hero-floating-telemetry">
+              <div class="badge-sensor-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+              <div class="badge-text-box">
+                <small>Autonomous Aquatic Edge Buoy</small>
+                <strong>FinFloat™ • Active Solar Telemetry</strong>
+              </div>
+            </div>
+
+            <!-- Quick Link to 3D CAD Studio -->
+            <a href="#model-explorer" class="hero-3d-jump-badge" title="Launch Interactive 3D Studio">
+              <div class="badge-pulse-glow"></div>
+              <div class="badge-cube-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+              </div>
+              <div class="badge-jump-text">
+                <span class="badge-sub">360° Hardware CAD</span>
+                <span class="badge-main">Explore FinFloat 3D →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         OVERVIEW SECTION
+         ========================================================================== -->
+    <section class="overview-section" id="overview" style="padding: 90px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 40px;">
+          <span class="section-tag">Company Overview</span>
+          <h2>Empowering Fish Farmers Through Practical Innovation</h2>
+          <p>
+            Welcome to <strong>Zynaq.Aqua Pvt. Ltd.</strong>, an engineering and technology company based in Alappuzha, Kerala, dedicated to developing practical, innovative solutions for the aquaculture sector.
+          </p>
+        </div>
+
+        <div style="max-width: 960px; margin: 0 auto; line-height: 1.8; color: var(--text-secondary); font-size: 1.1rem; text-align: center;">
+          <p style="margin-bottom: 24px;">
+            Operating under the vision of <strong>“Engineering Intelligence,”</strong> we integrate advanced engineering, automation, electronics, sensing, and intelligent technologies to address real-world challenges faced by fish farmers.
+          </p>
+          <p>
+            Our ultimate goal is to build a cohesive, smart aquaculture ecosystem where <span style="color:var(--brand-green); font-weight:600;">hardware</span>, <span style="color:var(--accent-cyan); font-weight:600;">automation</span>, <span style="color:var(--brand-green); font-weight:600;">sensors</span>, <span style="color:var(--accent-teal); font-weight:600;">artificial intelligence</span>, <span style="color:var(--brand-green); font-weight:600;">data analytics</span>, and software converge to maximize efficiency, reduce mortality, and elevate farmer profitability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FLAGSHIP INNOVATION: FINFLOAT
+         ========================================================================== -->
+    <section class="finfloat-section" id="finfloat">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Flagship Innovation</span>
+          <h2>FinFloat: The Foundational Anchor</h2>
+          <p>
+            Rather than offering a standalone automated feeding machine, we designed a fully connected intelligent system that serves as the bedrock of modern data-driven pond management.
+          </p>
+        </div>
+
+        <div class="finfloat-grid">
+          <!-- FinFloat Visual Media -->
+          <div class="finfloat-media-col">
+            <div class="finfloat-media-card">
+              <img src="assets/finfloat-feature.jpg" alt="FinFloat Hydrodynamic Twin-Pontoon Autonomous Device (1350 mm × 650 mm) with Integrated Solar Array and Rear Telemetry Tower" loading="lazy">
+            </div>
+          </div>
+
+          <!-- FinFloat Interactive Tabs & Capabilities -->
+          <div class="finfloat-info-col">
+            <div class="finfloat-tabs-nav" role="tablist">
+              <button class="finfloat-tab-btn active" data-tab="tab-monitoring" role="tab" aria-selected="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                <span>Pond Monitoring</span>
+              </button>
+              <button class="finfloat-tab-btn" data-tab="tab-feeding" role="tab" aria-selected="false">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"/>
+                </svg>
+                <span>Autonomous Feeding</span>
+              </button>
+              <button class="finfloat-tab-btn" data-tab="tab-analytics" role="tab" aria-selected="false">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="20" x2="18" y2="10"/>
+                  <line x1="12" y1="20" x2="12" y2="4"/>
+                  <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+                <span>Data & AI Decisions</span>
+              </button>
+            </div>
+
+            <!-- Tab 1: Monitoring -->
+            <div class="finfloat-tab-pane active" id="tab-monitoring">
+              <h3 class="tab-content-title">Real-Time Pond Environmental Monitoring</h3>
+              <p class="tab-content-desc">
+                FinFloat's multi-parameter submerged sensor array continuously samples water chemistry at critical pond depths, shielding fish stocks from lethal oxygen depletion and temperature shocks.
+              </p>
+              <div class="feature-pill-list">
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>Dissolved Oxygen (DO)</strong>
+                    <p>Optical luminescence probe accurate to 0.05 mg/L.</p>
+                  </div>
+                </div>
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>Water Temperature</strong>
+                    <p>Submerged continuous thermistor telemetry.</p>
+                  </div>
+                </div>
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>pH & Turbidity Probes</strong>
+                    <p>Guards alkalinity balance and algae bloom indicators.</p>
+                  </div>
+                </div>
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>Instant Anomaly Alerts</strong>
+                    <p>Automated SMS and app alerts when thresholds drop.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Autonomous Feeding -->
+            <div class="finfloat-tab-pane" id="tab-feeding">
+              <h3 class="tab-content-title">Automating Routine Farm Operations</h3>
+              <p class="tab-content-desc">
+                Feed represents up to 60-70% of total aquaculture operating costs. FinFloat replaces inconsistent, physically grueling manual feeding with intelligent, adaptive micro-dosing.
+              </p>
+              <div class="feature-pill-list">
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>360° Controlled Dispersion</strong>
+                    <p>Eliminates pellet crowding and aggressive competition.</p>
+                  </div>
+                </div>
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>Anti-Clog Motor Mechanism</strong>
+                    <p>Engineered for high humidity & tropical conditions.</p>
+                  </div>
+                </div>
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>Solar Assisted Power</strong>
+                    <p>Monocrystalline solar crown with 72h battery buffer.</p>
+                  </div>
+                </div>
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>65% Labor Reduction</strong>
+                    <p>Eliminates manual hauling and boat journeys across ponds.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Data Analytics -->
+            <div class="finfloat-tab-pane" id="tab-analytics">
+              <h3 class="tab-content-title">Smarter, Data-Driven Farm Decisions</h3>
+              <p class="tab-content-desc">
+                Every feeding event and environmental shift is logged to build a digital twin of your farm, enabling machine learning algorithms to optimize Feed Conversion Ratio (FCR).
+              </p>
+              <div class="feature-pill-list">
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>FCR Optimization</strong>
+                    <p>Prevents uneaten feed from decaying into toxic ammonia.</p>
+                  </div>
+                </div>
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>Appetite Modeling</strong>
+                    <p>Aligns feed release with natural dissolved oxygen peaks.</p>
+                  </div>
+                </div>
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>Historic Harvest Trends</strong>
+                    <p>Compare seasonal growth velocity across multiple ponds.</p>
+                  </div>
+                </div>
+                <div class="feature-pill">
+                  <div class="pill-icon-box">✓</div>
+                  <div class="pill-text">
+                    <strong>Mobile Dashboard</strong>
+                    <p>Complete control and telemetry on any smartphone.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <a href="#contact" class="btn btn-primary">
+                <span>Inquire About FinFloat Deployment</span>
+                <svg class="btn-icon" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FinFloat Engineering Specifications Grid -->
+        <div class="specs-card-container">
+          <div class="spec-box">
+            <div class="spec-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div class="spec-title">Dispersion Radius</div>
+            <div class="spec-value">Up to 15 Meters</div>
+            <div class="spec-sub">Omnidirectional motorized spread</div>
+          </div>
+
+          <div class="spec-box">
+            <div class="spec-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            </div>
+            <div class="spec-title">Pellet Capacity</div>
+            <div class="spec-value">60 kg Hopper</div>
+            <div class="spec-sub">Moisture-sealed industrial hopper</div>
+          </div>
+
+          <div class="spec-box">
+            <div class="spec-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                <line x1="12" y1="20" x2="12.01" y2="20"/>
+              </svg>
+            </div>
+            <div class="spec-title">IoT Connectivity</div>
+            <div class="spec-value">Dual 4G & LoRaWAN</div>
+            <div class="spec-sub">Long-range farm gateway uplink</div>
+          </div>
+
+          <div class="spec-box">
+            <div class="spec-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+              </svg>
+            </div>
+            <div class="spec-title">Power Autonomy</div>
+            <div class="spec-value">Solar + 72-Hr Battery</div>
+            <div class="spec-sub">Continuous cloudy-day operation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE 3D CAD STUDIO & HARDWARE EXPLORER
+         ========================================================================== -->
+    <section class="model-explorer-section" id="model-explorer">
+      <div class="container">
+        <div class="section-header">
+          <div class="studio-badge-pill">
+            <span class="live-dot-pulse"></span>
+            <span>R&D Engineering Lab</span>
+            <span class="studio-badge-sep">•</span>
+            <span class="studio-badge-sub">Production CAD Release</span>
+          </div>
+          <h2>FinFloat™ Interactive 3D Studio</h2>
+          <p>
+            Directly from our Alappuzha engineering workshop: inspect the production-grade CAD geometry of the FinFloat autonomous robotic buoy. Switch seamlessly between silky 360° studio turntable playback and real-time interactive 3D WebGL orbit controls.
+          </p>
+        </div>
+
+        <div class="studio-workspace-grid">
+          <!-- Main 3D / 360 Interactive Viewport Column -->
+          <div class="studio-stage-col">
+            <div class="studio-viewport-card">
+              <!-- Viewport Top Bar -->
+              <div class="viewport-top-bar">
+                <div class="mode-switcher-group" role="tablist">
+                  <button class="mode-tab-btn active" id="btnMode360" data-mode="360" role="tab" aria-selected="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                    </svg>
+                    <span>360° Studio Turntable</span>
+                  </button>
+                  <button class="mode-tab-btn" id="btnMode3D" data-mode="3d" role="tab" aria-selected="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                      <line x1="12" y1="22.08" x2="12" y2="12"/>
+                    </svg>
+                    <span>Interactive 3D CAD Mesh</span>
+                  </button>
+                </div>
+
+                <div class="viewport-status-tag" id="viewAngleBadge">
+                  <span class="status-indicator"></span>
+                  <span id="viewAngleText">Angle: 0° • Starboard Profile</span>
+                </div>
+              </div>
+
+              <!-- Canvas / Viewport Screen -->
+              <div class="viewport-screen-container" id="viewportScreen">
+                <!-- Mode 1: 360 Turntable Frame Sequence -->
+                <div class="turntable-view-layer active" id="turntableViewLayer">
+                  <div class="turntable-canvas-wrapper" id="turntableHitArea">
+                    <img id="turntableImage" src="assets/model-360/frame.0.png" alt="FinFloat 360 Studio Render" draggable="false">
+                    
+                    <!-- Interactive Drag Overlay Cue -->
+                    <div class="turntable-drag-cue" id="dragCueOverlay">
+                      <div class="cue-pill">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M7 16l-4-4 4-4M17 8l4 4-4 4M3 12h18"/>
+                        </svg>
+                        <span>Drag horizontally to rotate 360°</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mode 2: Real-time 3D CAD Model Viewer -->
+                <div class="cad-view-layer" id="cadViewLayer">
+                  <model-viewer
+                    id="cadModelViewer"
+                    src="assets/finfloat-model.glb"
+                    poster="assets/model-360/frame.0.png"
+                    alt="FinFloat 3D CAD Engineering Model"
+                    camera-controls
+                    auto-rotate
+                    rotation-per-second="20deg"
+                    shadow-intensity="1.5"
+                    shadow-softness="0.8"
+                    exposure="1.08"
+                    camera-orbit="45deg 70deg 105%"
+                    min-camera-orbit="auto auto 40%"
+                    max-camera-orbit="auto auto 200%"
+                    field-of-view="32deg"
+                    environment-image="neutral"
+                    loading="lazy">
+                    
+                    <button class="model-hotspot" slot="hotspot-bow" data-position="135 2 37" data-normal="1 0 0" data-visibility-attribute="visible" aria-label="Dual Optical AI Camera System">
+                      <div class="hotspot-dot"></div>
+                      <div class="hotspot-card">
+                        <strong>Dual Optical AI Sensors</strong>
+                        <p>Twin IP68 forward cameras analyze fish feeding vigor & surface turbulence.</p>
+                      </div>
+                    </button>
+
+                    <button class="model-hotspot" slot="hotspot-mast" data-position="70 58 37" data-normal="0 1 0" data-visibility-attribute="visible" aria-label="Telemetry Mast">
+                      <div class="hotspot-dot"></div>
+                      <div class="hotspot-card">
+                        <strong>IoT & Beacon Mast</strong>
+                        <p>Integrated 4G/LTE + LoRa long range antennas with multi-color safety strobe.</p>
+                      </div>
+                    </button>
+
+                    <button class="model-hotspot" slot="hotspot-hull" data-position="50 -35 85" data-normal="0 0 1" data-visibility-attribute="visible" aria-label="Hydrodynamic Hull">
+                      <div class="hotspot-dot"></div>
+                      <div class="hotspot-card">
+                        <strong>Stabilized Catamaran Hull</strong>
+                        <p>“Engineered for the water” with anti-fouling composite contours for high stability.</p>
+                      </div>
+                    </button>
+
+                    <button class="model-hotspot" slot="hotspot-hopper" data-position="5 0 37" data-normal="-1 0 0" data-visibility-attribute="visible" aria-label="Hopper & Dispenser">
+                      <div class="hotspot-dot"></div>
+                      <div class="hotspot-card">
+                        <strong>Centrifugal Feed Dispenser</strong>
+                        <p>Variable rate micro-dispenser with moisture-proof hopper level monitor.</p>
+                      </div>
+                    </button>
+
+                    <div class="model-viewer-controls-overlay">
+                      <div class="viewer-tip">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        <span>Left Click: Orbit • Right Click: Pan • Scroll: Zoom</span>
+                      </div>
+                    </div>
+                  </model-viewer>
+                </div>
+              </div>
+
+              <!-- Interactive Controls Toolbar -->
+              <div class="studio-controls-toolbar">
+                <!-- 360 Specific Controls (Play, Scrub Slider, Reset) -->
+                <div class="controls-subbar" id="turntableControlsBar">
+                  <div class="playback-btn-group">
+                    <button class="studio-ctrl-btn" id="btnToggleSpin" title="Toggle Auto-Spin (Space)">
+                      <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                      </svg>
+                      <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                        <rect x="6" y="4" width="4" height="16"/>
+                        <rect x="14" y="4" width="4" height="16"/>
+                      </svg>
+                      <span id="spinBtnLabel">Auto-Spin</span>
+                    </button>
+                    <button class="studio-ctrl-btn" id="btnResetSpin" title="Reset to Front View">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                        <path d="M3 3v5h5"/>
+                      </svg>
+                      <span>Reset</span>
+                    </button>
+                  </div>
+
+                  <!-- Scrub Range Slider -->
+                  <div class="slider-track-box">
+                    <span class="slider-end-label">0°</span>
+                    <input type="range" id="turntableSlider" min="0" max="35" value="0" step="1" aria-label="Rotate 360 degrees" class="custom-turntable-slider">
+                    <span class="slider-end-label">360°</span>
+                  </div>
+
+                  <!-- Angle Presets -->
+                  <div class="preset-angle-pills">
+                    <button class="preset-pill active" data-frame="0" data-label="Starboard Profile (Powered by Precision)">Starboard</button>
+                    <button class="preset-pill" data-frame="9" data-label="Bow Front (Dual AI Cameras)">Bow</button>
+                    <button class="preset-pill" data-frame="18" data-label="Port Side (Engineered for the Water)">Port</button>
+                    <button class="preset-pill" data-frame="27" data-label="Stern Rear (FinFloat / Dispenser)">Stern</button>
+                  </div>
+                </div>
+
+                <!-- 3D CAD Specific Controls (Camera Angle Presets) -->
+                <div class="controls-subbar" id="cadControlsBar" style="display: none;">
+                  <div class="playback-btn-group">
+                    <button class="studio-ctrl-btn" id="btnToggleCadRotate" title="Toggle Auto-Rotation">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                      </svg>
+                      <span id="cadRotateBtnLabel">Auto-Rotate: On</span>
+                    </button>
+                    <button class="studio-ctrl-btn" id="btnResetCadCamera" title="Reset Camera">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                        <path d="M3 3v5h5"/>
+                      </svg>
+                      <span>Reset Orbit</span>
+                    </button>
+                  </div>
+
+                  <div class="preset-angle-pills">
+                    <button class="preset-cad-pill active" data-orbit="45deg 70deg 105%" data-name="Isometric Perspective">Isometric</button>
+                    <button class="preset-cad-pill" data-orbit="90deg 85deg 110%" data-name="Bow / AI Vision Eyes">Bow View</button>
+                    <button class="preset-cad-pill" data-orbit="0deg 80deg 115%" data-name="Port Side Profile">Port Side</button>
+                    <button class="preset-cad-pill" data-orbit="180deg 80deg 115%" data-name="Starboard Profile">Starboard</button>
+                    <button class="preset-cad-pill" data-orbit="270deg 85deg 110%" data-name="Stern / Dispenser Unit">Stern</button>
+                    <button class="preset-cad-pill" data-orbit="0deg 15deg 120%" data-name="Top Deck & Solar Array">Top Deck</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Architecture & Hardware Anatomy Column -->
+          <div class="studio-specs-col">
+            <div class="anatomy-header">
+              <span class="anatomy-sub">Production Hardware Breakdown</span>
+              <h3>Physical Design Specifications</h3>
+              <p>Every contour of the FinFloat housing was custom engineered for hydrodynamic balance, anti-corrosion marine endurance, and solar autonomy.</p>
+            </div>
+
+            <div class="hardware-feature-list">
+              <!-- Feature 1 -->
+              <div class="hardware-feature-card" data-highlight="hull">
+                <div class="feature-icon-badge">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 18h20M2 14c3 0 5-2 8-2s5 2 8 2 3-2 4-2M4 10l2-4h12l2 4"/>
+                  </svg>
+                </div>
+                <div class="feature-body">
+                  <div class="feature-title-row">
+                    <h4>Hydrodynamic Twin-Pontoon Chassis</h4>
+                    <span class="tech-tag">1350 × 650 mm</span>
+                  </div>
+                  <p>Catamaran geometry (1350 mm in length × 650 mm in width) ensures zero rollover in surface chop and high-velocity aerator currents. Inscribed with <em>“Engineered for the Water”</em> and <em>“Powered by Precision”</em>.</p>
+                </div>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="hardware-feature-card" data-highlight="vision">
+                <div class="feature-icon-badge">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </div>
+                <div class="feature-body">
+                  <div class="feature-title-row">
+                    <h4>Bow AI Optical & Acoustic Vision</h4>
+                    <span class="tech-tag cyan">AI Edge</span>
+                  </div>
+                  <p>Dual recessed bow apertures house high-resolution cameras and hydrophones that continuously score biomass surface appetite to eliminate unconsumed feed waste.</p>
+                </div>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="hardware-feature-card" data-highlight="telemetry">
+                <div class="feature-icon-badge">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                  </svg>
+                </div>
+                <div class="feature-body">
+                  <div class="feature-title-row">
+                    <h4>High-Gain Telemetry & Strobe Tower</h4>
+                    <span class="tech-tag">LoRa + 4G LTE</span>
+                  </div>
+                  <p>Dual-redundant long-range antennas communicate up to 5 km to the farm master station, paired with an emergency color-coded status beacon for night navigation.</p>
+                </div>
+              </div>
+
+              <!-- Feature 4 -->
+              <div class="hardware-feature-card" data-highlight="solar">
+                <div class="feature-icon-badge">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                  </svg>
+                </div>
+                <div class="feature-body">
+                  <div class="feature-title-row">
+                    <h4>Integrated Solar & Passive Cooling Deck</h4>
+                    <span class="tech-tag">72-Hr Battery</span>
+                  </div>
+                  <p>Upper deck integrates weatherproof photovoltaic cells with micro-louvered convection heat vents, keeping internal battery and motor controllers cool in Kerala's tropical sun.</p>
+                </div>
+              </div>
+
+              <!-- Feature 5 -->
+              <div class="hardware-feature-card" data-highlight="dispenser">
+                <div class="feature-icon-badge">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"/>
+                  </svg>
+                </div>
+                <div class="feature-body">
+                  <div class="feature-title-row">
+                    <h4>High-Torque Centrifugal Micro-Dispenser</h4>
+                    <span class="tech-tag">15m Radius</span>
+                  </div>
+                  <p>Anti-jam vibratory feed throat dispenses pellets uniformly across a 15-meter diameter, eliminating schooling stress and biomass variation.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Download / Action CTA Box -->
+            <div class="studio-action-box">
+              <div class="action-box-inner">
+                <div>
+                  <strong>Interested in Field Pilot or CAD Integration?</strong>
+                  <p>Inquire with our engineering team for on-site pilot trials or technical hardware datasheets.</p>
+                </div>
+                <a href="#contact" class="btn btn-primary btn-sm">
+                  <span>Contact Engineering</span>
+                  <svg class="btn-icon" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTEGRATED SMART AQUACULTURE ECOSYSTEM
+         ========================================================================== -->
+    <section class="ecosystem-section" id="ecosystem">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag cyan">Intelligent Convergence</span>
+          <h2>The Smart Aquaculture Ecosystem</h2>
+          <p>
+            FinFloat is just the beginning. We are uniting hardware, automation, sensors, artificial intelligence, data analytics, and cloud software to create an autonomous farming ecosystem.
+          </p>
+        </div>
+
+        <div class="ecosystem-flow-grid">
+          <!-- Step 1 -->
+          <div class="flow-step-card">
+            <span class="step-number">PHASE 01</span>
+            <div class="flow-step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+              </svg>
+            </div>
+            <h3 class="flow-step-title">Sensors & Hardware</h3>
+            <p class="flow-step-desc">
+              FinFloat deployed directly on the pond water surface. Submerged optical probes continuously sample Dissolved Oxygen, Temperature, pH, and Salinity.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flow-step-card">
+            <span class="step-number">PHASE 02</span>
+            <div class="flow-step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="flow-step-title">Edge Telemetry</h3>
+            <p class="flow-step-desc">
+              Onboard microcontrollers process sensor signals at the edge and securely stream live data packets over LoRaWAN or 4G LTE to the farm cloud repository.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flow-step-card">
+            <span class="step-number">PHASE 03</span>
+            <div class="flow-step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3 class="flow-step-title">AI & Analytics</h3>
+            <p class="flow-step-desc">
+              Intelligent algorithms analyze feeding behavior, diurnal oxygen curves, and ambient conditions to formulate the exact micro-feeding schedule needed.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flow-step-card">
+            <span class="step-number">PHASE 04</span>
+            <div class="flow-step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="flow-step-title">Autonomous Action</h3>
+            <p class="flow-step-desc">
+              FinFloat dispenses precision rations automatically while farmers monitor pond health, aeration status, and biomass gains from anywhere via mobile app.
+            </p>
+          </div>
+        </div>
+
+        <!-- Ecosystem Aerial Feature Banner -->
+        <div class="ecosystem-banner">
+          <img src="assets/smart-aquafarm.jpg" alt="Zynaq.Aqua Smart Aquaculture Farm in Kerala with Deployed FinFloat Twin-Pontoon Devices" class="ecosystem-banner-img" loading="lazy">
+          <div class="ecosystem-banner-content">
+            <span class="section-tag">Field-Tested Architecture</span>
+            <h3>Scalable for Smallholders and Commercial Estates Alike</h3>
+            <p>
+              Whether operating a 2-pond inland farm or a 50-pond coastal shrimp cluster in Kerala, Zynaq.Aqua's distributed architecture adapts seamlessly to your water geography.
+            </p>
+            <a href="#calculator" class="btn btn-cyan" style="align-self: flex-start;">
+              <span>Calculate Your Farm Savings</span>
+              <svg class="btn-icon" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LIVE INTERACTIVE POND SIMULATOR / DASHBOARD
+         ========================================================================== -->
+    <section class="demo-section" id="demo">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Simulation</span>
+          <h2>Live Farm Telemetry & Control Console</h2>
+          <p>
+            Experience how Zynaq.Aqua software presents live pond parameters, provides AI-driven feeding advice, and executes precision robotic feeding.
+          </p>
+        </div>
+
+        <div class="simulator-terminal">
+          <!-- Terminal Top Bar -->
+          <div class="terminal-header">
+            <div class="terminal-controls">
+              <span class="ctrl-dot red"></span>
+              <span class="ctrl-dot yellow"></span>
+              <span class="ctrl-dot green"></span>
+            </div>
+            <div class="terminal-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+              <span>Zynaq.Aqua OS™ — Farm Intelligence v2.4</span>
+            </div>
+            <div class="terminal-badge" id="terminalStatusBadge">LIVE: Optimal Aeration</div>
+          </div>
+
+          <!-- Pond Selector Tabs -->
+          <div class="pond-nav-tabs">
+            <button class="pond-tab-btn active" data-pond="shrimp">
+              <span>🦐 Pond A1: Vannamei Shrimp</span>
+            </button>
+            <button class="pond-tab-btn" data-pond="tilapia">
+              <span>🐟 Pond B2: Nile Tilapia</span>
+            </button>
+            <button class="pond-tab-btn" data-pond="seabass">
+              <span>🌊 Pond C4: Asian Seabass</span>
+            </button>
+          </div>
+
+          <!-- Terminal Dashboard Body -->
+          <div class="terminal-body">
+            <!-- 4 Key Telemetry Cards -->
+            <div class="telemetry-live-grid">
+              <!-- Dissolved Oxygen -->
+              <div class="telemetry-card">
+                <div class="telemetry-card-top">
+                  <span class="sensor-name">Dissolved Oxygen</span>
+                  <span class="sensor-status-dot"></span>
+                </div>
+                <div class="telemetry-reading">
+                  <span class="sensor-val" id="simValDO">6.8</span>
+                  <span class="sensor-unit">mg/L</span>
+                </div>
+                <svg class="sparkline-svg" id="sparklineDO" viewBox="0 0 120 38">
+                  <polyline points="0,25 20,22 40,28 60,18 80,24 100,20 120,22"/>
+                </svg>
+              </div>
+
+              <!-- Water Temp -->
+              <div class="telemetry-card">
+                <div class="telemetry-card-top">
+                  <span class="sensor-name">Water Temperature</span>
+                  <span class="sensor-status-dot"></span>
+                </div>
+                <div class="telemetry-reading">
+                  <span class="sensor-val" id="simValTemp">28.4</span>
+                  <span class="sensor-unit">°C</span>
+                </div>
+                <svg class="sparkline-svg" id="sparklineTemp" viewBox="0 0 120 38">
+                  <polyline points="0,18 20,20 40,19 60,22 80,21 100,19 120,20"/>
+                </svg>
+              </div>
+
+              <!-- pH Level -->
+              <div class="telemetry-card">
+                <div class="telemetry-card-top">
+                  <span class="sensor-name">pH Level</span>
+                  <span class="sensor-status-dot"></span>
+                </div>
+                <div class="telemetry-reading">
+                  <span class="sensor-val" id="simValPH">7.88</span>
+                  <span class="sensor-unit">pH</span>
+                </div>
+                <svg class="sparkline-svg" id="sparklinePH" viewBox="0 0 120 38">
+                  <polyline points="0,22 20,24 40,23 60,21 80,22 100,20 120,21"/>
+                </svg>
+              </div>
+
+              <!-- Salinity -->
+              <div class="telemetry-card">
+                <div class="telemetry-card-top">
+                  <span class="sensor-name">Salinity</span>
+                  <span class="sensor-status-dot"></span>
+                </div>
+                <div class="telemetry-reading">
+                  <span class="sensor-val" id="simValSalinity">18.2</span>
+                  <span class="sensor-unit">ppt</span>
+                </div>
+                <svg class="sparkline-svg" id="sparklineSal" viewBox="0 0 120 38">
+                  <polyline points="0,20 20,21 40,20 60,19 80,20 100,21 120,20"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Action Controls Bar -->
+            <div class="simulator-actions-bar">
+              <!-- AI Recommendation Alert -->
+              <div class="ai-alert-box">
+                <div class="ai-icon-pulse">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                    <path d="M12 2a10 10 0 0 1 10 10h-10V2z"/>
+                    <path d="M12 12 2.1 12a10 10 0 0 0 9.9 10V12z"/>
+                  </svg>
+                </div>
+                <div class="ai-alert-text">
+                  <strong>AI Appetite & Water Quality Advisor</strong>
+                  <p id="simAiRecommendation">
+                    Dissolved oxygen optimal at 6.8 mg/L. Optimal feeding window active. Dispersing 1.8 kg micro-ration.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Trigger Feed Button -->
+              <div class="feed-control-box">
+                <button class="feed-trigger-btn" id="triggerFeedBtn">
+                  <svg class="btn-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  <span>Trigger Precision Feed</span>
+                </button>
+                <div class="feed-log-indicator" id="feedStatusLog">
+                  FinFloat Dispenser: <span style="color:var(--brand-green);">Ready</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FARMER ROI & FEED SAVINGS CALCULATOR
+         ========================================================================== -->
+    <section class="roi-section" id="calculator">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Economics & Impact</span>
+          <h2>Calculate Your Farm ROI With Zynaq.Aqua</h2>
+          <p>
+            See how much your aquaculture operation will save each year by eliminating overfeeding, reducing mortality risks, and automating physical pond labor.
+          </p>
+        </div>
+
+        <div class="calculator-wrapper">
+          <!-- Inputs Column -->
+          <div class="calc-inputs-col">
+            <!-- Currency Toggle -->
+            <div class="currency-toggle-group">
+              <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 600;">Currency:</span>
+              <button class="currency-btn active" id="currInrBtn">₹ INR (Indian Rupee)</button>
+              <button class="currency-btn" id="currUsdBtn">$ USD</button>
+            </div>
+
+            <!-- Number of Ponds Slider -->
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <label for="calcPondsInput" class="calc-label">Total Number of Ponds</label>
+                <span class="calc-live-value" id="calcPondsDisplay">6 Ponds</span>
+              </div>
+              <input type="range" id="calcPondsInput" class="range-slider" min="1" max="50" value="6" step="1">
+              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted);">
+                <span>1 Pond</span>
+                <span>25 Ponds</span>
+                <span>50 Ponds</span>
+              </div>
+            </div>
+
+            <!-- Monthly Feed Cost Slider -->
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <label for="calcFeedCostInput" class="calc-label">Monthly Farm Feed Expenditure</label>
+                <span class="calc-live-value" id="calcFeedCostDisplay">₹2,40,000</span>
+              </div>
+              <input type="range" id="calcFeedCostInput" class="range-slider" min="25000" max="1500000" value="240000" step="25000">
+              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted);">
+                <span>₹25,000</span>
+                <span>₹7,50,000</span>
+                <span>₹15,00,000</span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+              * Calculations based on field data across tropical fish and shrimp ponds with an average 18.5% feed wastage reduction, labor reduction of 24 hrs/month per pond, and FCR optimization.
+            </p>
+          </div>
+
+          <!-- Dynamic Output Results Column -->
+          <div class="calc-results-box">
+            <div class="results-header">Estimated Annual Savings</div>
+            <div class="savings-headline" id="calcAnnualSavingsDisplay">₹5,32,800</div>
+            <div class="savings-sub">Direct feed cost saved per year across your ponds</div>
+
+            <div class="roi-metrics-grid">
+              <div class="roi-metric-item">
+                <span class="roi-metric-label">Manual Labor Saved</span>
+                <div class="roi-metric-val" id="calcLaborHoursDisplay">144 hrs / mo</div>
+              </div>
+              <div class="roi-metric-item">
+                <span class="roi-metric-label">FCR Efficiency Gain</span>
+                <div class="roi-metric-val" id="calcFcrDisplay">-0.26 FCR</div>
+              </div>
+              <div class="roi-metric-item">
+                <span class="roi-metric-label">Estimated Payback</span>
+                <div class="roi-metric-val" id="calcPaybackDisplay">5.8 Months</div>
+              </div>
+              <div class="roi-metric-item">
+                <span class="roi-metric-label">Mortality Risk Drop</span>
+                <div class="roi-metric-val" style="color:var(--brand-green);">Significant</div>
+              </div>
+            </div>
+
+            <a href="#contact" class="btn btn-primary" style="width: 100%;">
+              <span>Request Custom Farm ROI Assessment</span>
+              <svg class="btn-icon" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         VISION & MISSION
+         ========================================================================== -->
+    <section class="about-vision-section" id="vision-mission">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Guiding Principles</span>
+          <h2>Our Vision & Mission</h2>
+          <p>
+            Building the next frontier of sustainable and technologically empowered aquaculture from the coastal waterways of Kerala.
+          </p>
+        </div>
+
+        <div class="vision-mission-grid">
+          <!-- Vision Card -->
+          <div class="vm-card vision">
+            <div class="vm-icon-header">
+              <div class="vm-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </div>
+              <h3 class="vm-title">Our Vision</h3>
+            </div>
+            <p class="vm-quote">
+              “To build a smarter and more sustainable aquaculture ecosystem through intelligent engineering, automation, and technology—making fish farming more efficient, connected, and future-ready.”
+            </p>
+            <p class="vm-detail">
+              We envision a future where fish and shrimp producers are liberated from manual toil and uncertainty, relying on intelligent autonomous systems that safeguard water health, maximize yields, and protect delicate aquatic ecosystems.
+            </p>
+          </div>
+
+          <!-- Mission Card -->
+          <div class="vm-card mission">
+            <div class="vm-icon-header">
+              <div class="vm-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m12 14 4-4"/>
+                  <path d="M3.34 19a10 10 0 1 1 17.32 0"/>
+                </svg>
+              </div>
+              <h3 class="vm-title">Our Mission</h3>
+            </div>
+            <p class="vm-quote">
+              “To develop practical and innovative aquaculture solutions that reduce manual effort, improve farm management, and support better decision-making through automation, AI, sensing, and robotics.”
+            </p>
+            <p class="vm-detail">
+              Starting with FinFloat, we are building an integrated ecosystem where smart hardware, autonomous systems, data, and software work together to solve real-world challenges faced by farmers on a daily basis.
+            </p>
+          </div>
+        </div>
+
+        <!-- Alappuzha, Kerala Roots Card -->
+        <div class="kerala-roots-card">
+          <div class="roots-text">
+            <span class="section-tag" style="margin-bottom: 12px;">Kerala Engineering Roots</span>
+            <h3>Born in the Heart of Alappuzha's Water Ecosystem</h3>
+            <p>
+              Alappuzha is globally renowned for its intricate backwaters, coastal lagoons, and centuries of fish and shrimp farming tradition. Zynaq.Aqua Pvt. Ltd. was founded here with deep grassroots empathy for the challenges local farmers endure every morning and night.
+            </p>
+            <div class="roots-features">
+              <span class="roots-tag">✓ Alappuzha-Grown Technology</span>
+              <span class="roots-tag">✓ Ruggedized for Tropical Waters</span>
+              <span class="roots-tag">✓ Direct On-Field Farm Trials</span>
+              <span class="roots-tag">✓ Global Scalability</span>
+            </div>
+          </div>
+
+          <div class="roots-badge-box">
+            <div class="kerala-icon">🌴 🌊</div>
+            <h4>Alappuzha, Kerala, India</h4>
+            <p>Amanath Manzil, Punnapra P.O., 688004</p>
+            <p style="margin-top: 8px; color: var(--brand-green); font-weight: 600;">
+              Indigenous Engineering Excellence
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT & DEMO INQUIRY PORTAL
+         ========================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Get in Touch</span>
+          <h2>Connect With Zynaq.Aqua</h2>
+          <p>
+            Whether you are a commercial fish farmer seeking a FinFloat demo, an institutional partner, or an aquaculture researcher, we welcome your inquiries.
+          </p>
+        </div>
+
+        <div class="contact-layout-grid">
+          <!-- Contact Direct Info -->
+          <div class="contact-info-col">
+            <!-- Corporate Office -->
+            <div class="contact-card-box">
+              <div class="contact-icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h4>Corporate Office</h4>
+                <p>Amanath Manzil, Punnapra P.O.</p>
+                <p>Alappuzha, Kerala – 688004, India</p>
+              </div>
+            </div>
+
+            <!-- Phone / WhatsApp -->
+            <div class="contact-card-box">
+              <div class="contact-icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h4>Phone & WhatsApp</h4>
+                <p>Direct line for farmer consultations and demos:</p>
+                <a href="tel:+919656961637" class="contact-link-val">+91 9656961637</a>
+                <div style="margin-top: 6px;">
+                  <a href="https://wa.me/919656961637" target="_blank" rel="noopener noreferrer" style="color:var(--brand-green); font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:4px;">
+                    <span>Message on WhatsApp &rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-card-box">
+              <div class="contact-icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h4>Email Inquiries</h4>
+                <p>Official corporate and partnership communications:</p>
+                <a href="mailto:zynaq.co@gmail.com" class="contact-link-val">zynaq.co@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Request Form -->
+          <div class="contact-form-box">
+            <h3>Schedule a FinFloat Demonstration</h3>
+            <p>Fill out the form below to speak with our engineering team in Alappuzha.</p>
+
+            <form id="demoInquiryForm">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="farmerName" class="form-label">Full Name *</label>
+                  <input type="text" id="farmerName" class="form-input" placeholder="e.g. Saifudeen" required>
+                </div>
+                <div class="form-group">
+                  <label for="farmerPhone" class="form-label">Phone Number *</label>
+                  <input type="tel" id="farmerPhone" class="form-input" placeholder="e.g. +91 96569 61637" required>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="farmerEmail" class="form-label">Email Address *</label>
+                  <input type="email" id="farmerEmail" class="form-input" placeholder="e.g. name@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="farmLocation" class="form-label">Farm Location (District / State)</label>
+                  <input type="text" id="farmLocation" class="form-input" placeholder="e.g. Alappuzha, Kerala">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="pondCount" class="form-label">Number of Ponds</label>
+                  <select id="pondCount" class="form-select">
+                    <option value="1">1 - 2 Ponds (Smallholder)</option>
+                    <option value="5" selected>3 - 8 Ponds (Mid-scale)</option>
+                    <option value="15">9 - 25 Ponds (Commercial)</option>
+                    <option value="30">25+ Ponds (Large Enterprise)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="speciesType" class="form-label">Primary Cultured Species</label>
+                  <select id="speciesType" class="form-select">
+                    <option value="shrimp">Litopenaeus Vannamei (Shrimp)</option>
+                    <option value="tilapia">Nile Tilapia / GIFT</option>
+                    <option value="seabass">Asian Seabass / Bhetki</option>
+                    <option value="carps">Indian Major Carps (Rohu/Catla)</option>
+                    <option value="other">Other / Polyculture</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="farmerMessage" class="form-label">How can we assist you?</label>
+                <textarea id="farmerMessage" class="form-textarea" placeholder="Tell us about your farm setup, feeding challenges, or scheduling preferences..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary form-submit-btn">
+                <span>Submit Demo Request</span>
+                <svg class="btn-icon" viewBox="0 0 24 24">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+
+              <div class="form-status-msg" id="formStatusMessage"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Summary Column -->
+        <div class="footer-brand-col">
+          <a href="#hero" class="brand-logo-link" aria-label="Zynaq.Aqua Home" style="margin-bottom: 16px;">
+            <img src="assets/zynaq-logo-transparent.png" alt="Zynaq.Aqua - Engineering Intelligence" class="brand-logo-img" style="height: 52px;" width="180" height="52">
+          </a>
+          <p>
+            Engineering Intelligence for modern aquaculture. Bridging robotics, automation, multi-parameter sensing, and cloud AI to create a connected and sustainable aquaculture future.
+          </p>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            CIN / Registration: Kerala, India
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#overview">Company Overview</a></li>
+            <li><a href="#finfloat">FinFloat Innovation</a></li>
+            <li><a href="#ecosystem">Smart Ecosystem</a></li>
+            <li><a href="#demo">Live Console Simulator</a></li>
+            <li><a href="#calculator">ROI Calculator</a></li>
+          </ul>
+        </div>
+
+        <!-- Technology Pillars -->
+        <div>
+          <h4 class="footer-col-title">Technology Pillars</h4>
+          <ul class="footer-links-list">
+            <li><a href="#finfloat">Autonomous Precision Feeding</a></li>
+            <li><a href="#finfloat">Optical DO & pH Telemetry</a></li>
+            <li><a href="#ecosystem">Edge Robotics & LoRaWAN</a></li>
+            <li><a href="#demo">Predictive AI Growth Analytics</a></li>
+            <li><a href="#vision-mission">Sustainable Farm Ecology</a></li>
+          </ul>
+        </div>
+
+        <!-- Corporate Contact Details -->
+        <div>
+          <h4 class="footer-col-title">Corporate Office</h4>
+          <div class="footer-office-block">
+            <strong style="color: #fff; display:block; margin-bottom:4px;">Zynaq.Aqua Pvt. Ltd.</strong>
+            Amanath Manzil, Punnapra P.O.<br>
+            Alappuzha, Kerala – 688004<br>
+            India<br><br>
+            <strong>Phone:</strong> <a href="tel:+919656961637" style="color: var(--brand-green);">+91 9656961637</a><br>
+            <strong>Email:</strong> <a href="mailto:zynaq.co@gmail.com" style="color: var(--brand-green);">zynaq.co@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Legal & Credentials Bar -->
+      <div class="footer-bottom-bar">
+        <div>
+          &copy; 2026 <strong>Zynaq.Aqua Pvt. Ltd.</strong> All rights reserved. Operating under the vision of “Engineering Intelligence”.
+        </div>
+        <div style="display:flex; gap: 20px;">
+          <span>Engineered with pride in Alappuzha, Kerala, India</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
