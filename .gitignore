@@ -1,4 +1,21 @@
+# Dependencies
 node_modules/
-design/
-.DS_Store
+package-lock.json
+
+# Environment & Logs
+.env
+.env.local
 *.log
+npm-debug.log*
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Design source files (uncompressed 3D models/raw assets)
+design/
+*.blend
+*.blend1
+*.obj
+*.fbx

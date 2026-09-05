@@ -1,8 +1,17 @@
 {
+  "name": "zynaq-aqua",
+  "version": "1.0.0",
+  "description": "Official website and interactive 3D product showcase for Zynaq.Aqua Pvt. Ltd.",
   "scripts": {
     "start": "node server.js"
   },
-  "devDependencies": {
-    "sharp": "^0.35.4"
-  }
+  "keywords": [
+    "aquaculture",
+    "robotics",
+    "finfloat",
+    "iot",
+    "zynaq-aqua"
+  ],
+  "author": "Zynaq.Aqua Pvt. Ltd.",
+  "license": "UNLICENSED"
 }
