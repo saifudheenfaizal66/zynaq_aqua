@@ -1116,6 +1116,14 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
 }
 
+.two-pond-desc-desktop {
+  display: inline;
+}
+
+.two-pond-desc-mobile {
+  display: none;
+}
+
 .two-pond-header-actions {
   flex-shrink: 0;
 }
@@ -1266,6 +1274,24 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--brand-green);
   color: var(--brand-green);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 14px rgba(0, 230, 118, 0.35);
+}
+
+.hotspot-pointer-line {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1.5px;
+  height: 24px;
+  background: linear-gradient(180deg, var(--accent-cyan) 0%, rgba(0, 240, 255, 0.4) 60%, transparent 100%);
+  pointer-events: none;
+  opacity: 0.85;
+  box-shadow: 0 0 6px var(--accent-cyan);
+}
+
+.hotspot-pointer-line.hub {
+  background: linear-gradient(180deg, var(--brand-green) 0%, rgba(0, 230, 118, 0.4) 60%, transparent 100%);
+  height: 20px;
+  box-shadow: 0 0 6px var(--brand-green);
 }
 
 .hotspot-pin:hover,
@@ -2694,27 +2720,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 10px rgba(0, 240, 255, 0.15);
 }
 
-.viewport-status-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  background: rgba(16, 23, 34, 0.8);
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-}
-
-.status-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--brand-green);
-  box-shadow: 0 0 8px var(--brand-green);
-}
-
 /* Viewport Screen Area */
 .viewport-screen-container {
   position: relative;
@@ -3598,13 +3603,6 @@ h1, h2, h3, h4, h5, h6 {
     flex-shrink: 0;
   }
 
-  .viewport-status-tag {
-    width: 100%;
-    justify-content: center;
-    font-size: 0.72rem;
-    padding: 5px 10px;
-  }
-
   .studio-controls-toolbar {
     padding: 12px;
   }
@@ -3731,14 +3729,58 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 
+  .two-pond-desc-desktop {
+    display: none !important;
+  }
+
+  .two-pond-desc-mobile {
+    display: block !important;
+    font-size: 0.94rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .two-pond-spec-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
   .two-pond-spec-card {
-    padding: 16px;
+    padding: 12px 14px;
     gap: 12px;
+    align-items: center;
+    background: rgba(16, 23, 34, 0.75);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-subtle);
   }
 
   .spec-card-icon {
     width: 36px;
     height: 36px;
+  }
+
+  .spec-badge {
+    font-size: 0.68rem;
+    margin-bottom: 2px;
+  }
+
+  .two-pond-spec-card h4 {
+    font-size: 0.92rem;
+    margin: 0;
+  }
+
+  /* Streamline mobile overview - remove verbose multi-paragraph text */
+  .spec-card-desc {
+    display: none;
+  }
+
+  .hotspot-pointer-line {
+    height: 18px;
+  }
+
+  .hotspot-pointer-line.hub {
+    height: 14px;
   }
 
   /* Hardware Breakdown Feature Cards */
@@ -3755,7 +3797,36 @@ h1, h2, h3, h4, h5, h6 {
 
   /* Ecosystem Flow & Simulator */
   .ecosystem-flow-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .flow-step-card {
+    padding: 14px 12px;
+    border-radius: var(--radius-sm);
+  }
+
+  .step-number {
+    font-size: 0.72rem;
+    padding: 2px 6px;
+    margin-bottom: 8px;
+  }
+
+  .flow-step-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 8px;
+  }
+
+  .flow-step-title {
+    font-size: 0.94rem;
+    margin-bottom: 0;
+  }
+
+  /* Streamline mobile overview by eliminating multi-paragraph clutter */
+  .flow-step-desc {
+    display: none;
   }
 
   .terminal-header {
