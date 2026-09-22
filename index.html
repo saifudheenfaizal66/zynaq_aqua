@@ -136,7 +136,7 @@
             <div class="hero-badge-container">
               <div class="hero-badge">
                 <span class="pulse-dot"></span>
-                <span>Autonomous Aquatic Edge Buoy • FinFloat™</span>
+                <span>Autonomous Aquatic Edge Buoy • FinFloat</span>
               </div>
             </div>
 
@@ -205,7 +205,7 @@
               </div>
               <div class="badge-text-box">
                 <small>Autonomous Aquatic Edge Buoy</small>
-                <strong>FinFloat™ • Active Solar Telemetry</strong>
+                <strong>FinFloat • Active Solar Telemetry</strong>
               </div>
             </div>
 
@@ -352,15 +352,15 @@
                 <div class="feature-pill">
                   <div class="pill-icon-box">✓</div>
                   <div class="pill-text">
-                    <strong>360° Controlled Dispersion</strong>
-                    <p>Eliminates pellet crowding and aggressive competition.</p>
+                    <strong>Gravity Dispersing System</strong>
+                    <p>Gravity-assisted precision dispensing eliminates pellet crowding and pellet damage.</p>
                   </div>
                 </div>
                 <div class="feature-pill">
                   <div class="pill-icon-box">✓</div>
                   <div class="pill-text">
-                    <strong>Anti-Clog Motor Mechanism</strong>
-                    <p>Engineered for high humidity & tropical conditions.</p>
+                    <strong>Anti-Clog Monitoring System</strong>
+                    <p>Active feed throat sensors continuously monitor and prevent clogs in humid tropical conditions.</p>
                   </div>
                 </div>
                 <div class="feature-pill">
@@ -437,9 +437,9 @@
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
               </svg>
             </div>
-            <div class="spec-title">Dispersion Radius</div>
-            <div class="spec-value">Up to 15 Meters</div>
-            <div class="spec-sub">Omnidirectional motorized spread</div>
+            <div class="spec-title">Dispersion System</div>
+            <div class="spec-value">Gravity-Assisted</div>
+            <div class="spec-sub">Anti-clog monitored feed throat</div>
           </div>
 
           <div class="spec-box">
@@ -464,8 +464,8 @@
               </svg>
             </div>
             <div class="spec-title">IoT Connectivity</div>
-            <div class="spec-value">Dual 4G & LoRaWAN</div>
-            <div class="spec-sub">Long-range farm gateway uplink</div>
+            <div class="spec-value">High-Speed 4G LTE</div>
+            <div class="spec-sub">Standard gateway cloud telemetry</div>
           </div>
 
           <div class="spec-box">
@@ -500,7 +500,7 @@
             <span class="studio-badge-sep">•</span>
             <span class="studio-badge-sub">Production CAD Release</span>
           </div>
-          <h2>FinFloat™ Interactive 3D Studio</h2>
+          <h2>FinFloat Interactive 3D Studio</h2>
           <p>
             Directly from our Alappuzha engineering workshop: inspect the production-grade CAD geometry of the FinFloat autonomous robotic buoy. Switch seamlessly between silky 360° studio turntable playback and real-time interactive 3D WebGL orbit controls.
           </p>
@@ -512,27 +512,18 @@
             <div class="studio-viewport-card">
               <!-- Viewport Top Bar -->
               <div class="viewport-top-bar">
-                <div class="mode-switcher-group" role="tablist">
-                  <button class="mode-tab-btn active" id="btnMode360" data-mode="360" role="tab" aria-selected="true">
+                <div class="mode-switcher-group" role="tablist" aria-label="Studio view selection">
+                  <div class="mode-tab-btn active" id="btnMode360" role="tab" aria-selected="true" aria-current="page">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
                     </svg>
                     <span>360° Studio Turntable</span>
-                  </button>
-                  <button class="mode-tab-btn" id="btnMode3D" data-mode="3d" role="tab" aria-selected="false">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                      <line x1="12" y1="22.08" x2="12" y2="12"/>
-                    </svg>
-                    <span>Interactive 3D CAD Mesh</span>
-                  </button>
+                  </div>
                 </div>
               </div>
 
               <!-- Canvas / Viewport Screen -->
               <div class="viewport-screen-container" id="viewportScreen">
-                <!-- Mode 1: 360 Turntable Frame Sequence -->
                 <div class="turntable-view-layer active" id="turntableViewLayer">
                   <div class="turntable-canvas-wrapper" id="turntableHitArea">
                     <img id="turntableImage" src="assets/model-360/frame.0.png" alt="FinFloat 360 Studio Render" draggable="false">
@@ -547,69 +538,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <!-- Mode 2: Real-time 3D CAD Model Viewer -->
-                <div class="cad-view-layer" id="cadViewLayer">
-                  <model-viewer
-                    id="cadModelViewer"
-                    src="assets/finfloat-model.glb"
-                    poster="assets/model-360/frame.0.png"
-                    alt="FinFloat 3D CAD Engineering Model"
-                    camera-controls
-                    auto-rotate
-                    rotation-per-second="20deg"
-                    shadow-intensity="1.5"
-                    shadow-softness="0.8"
-                    exposure="1.08"
-                    camera-orbit="45deg 70deg 105%"
-                    min-camera-orbit="auto auto 40%"
-                    max-camera-orbit="auto auto 200%"
-                    field-of-view="32deg"
-                    environment-image="neutral"
-                    loading="lazy">
-                    
-                    <button class="model-hotspot" slot="hotspot-bow" data-position="135 2 37" data-normal="1 0 0" data-visibility-attribute="visible" aria-label="Dual Optical AI Camera System">
-                      <div class="hotspot-dot"></div>
-                      <div class="model-hotspot-card">
-                        <strong>Dual Optical AI Sensors</strong>
-                        <p>Twin IP68 forward cameras analyze fish feeding vigor & surface turbulence.</p>
-                      </div>
-                    </button>
-
-                    <button class="model-hotspot" slot="hotspot-mast" data-position="70 58 37" data-normal="0 1 0" data-visibility-attribute="visible" aria-label="Telemetry Mast">
-                      <div class="hotspot-dot"></div>
-                      <div class="model-hotspot-card">
-                        <strong>IoT & Beacon Mast</strong>
-                        <p>Integrated 4G/LTE + LoRa long range antennas with multi-color safety strobe.</p>
-                      </div>
-                    </button>
-
-                    <button class="model-hotspot" slot="hotspot-hull" data-position="50 -35 85" data-normal="0 0 1" data-visibility-attribute="visible" aria-label="Hydrodynamic Hull">
-                      <div class="hotspot-dot"></div>
-                      <div class="model-hotspot-card">
-                        <strong>Stabilized Catamaran Hull</strong>
-                        <p>“Engineered for the water” with anti-fouling composite contours for high stability.</p>
-                      </div>
-                    </button>
-
-                    <button class="model-hotspot" slot="hotspot-hopper" data-position="5 0 37" data-normal="-1 0 0" data-visibility-attribute="visible" aria-label="Hopper & Dispenser">
-                      <div class="hotspot-dot"></div>
-                      <div class="model-hotspot-card">
-                        <strong>Centrifugal Feed Dispenser</strong>
-                        <p>Variable rate micro-dispenser with moisture-proof hopper level monitor.</p>
-                      </div>
-                    </button>
-
-                    <div class="model-viewer-controls-overlay">
-                      <div class="viewer-tip">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
-                        </svg>
-                        <span>Left Click: Orbit • Right Click: Pan • Scroll: Zoom</span>
-                      </div>
-                    </div>
-                  </model-viewer>
                 </div>
               </div>
 
@@ -647,39 +575,12 @@
                   <!-- Angle Presets -->
                   <div class="preset-angle-pills">
                     <button class="preset-pill active" data-frame="0" data-label="Starboard Profile (Powered by Precision)">Starboard</button>
-                    <button class="preset-pill" data-frame="9" data-label="Bow Front (Dual AI Cameras)">Bow</button>
+                    <button class="preset-pill" data-frame="9" data-label="Bow Front (LiDAR & Acoustic Sensors)">Bow</button>
                     <button class="preset-pill" data-frame="18" data-label="Port Side (Engineered for the Water)">Port</button>
                     <button class="preset-pill" data-frame="27" data-label="Stern Rear (FinFloat / Dispenser)">Stern</button>
                   </div>
                 </div>
 
-                <!-- 3D CAD Specific Controls (Camera Angle Presets) -->
-                <div class="controls-subbar" id="cadControlsBar" style="display: none;">
-                  <div class="playback-btn-group">
-                    <button class="studio-ctrl-btn" id="btnToggleCadRotate" title="Toggle Auto-Rotation">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-                      </svg>
-                      <span id="cadRotateBtnLabel">Auto-Rotate: On</span>
-                    </button>
-                    <button class="studio-ctrl-btn" id="btnResetCadCamera" title="Reset Camera">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                        <path d="M3 3v5h5"/>
-                      </svg>
-                      <span>Reset Orbit</span>
-                    </button>
-                  </div>
-
-                  <div class="preset-angle-pills">
-                    <button class="preset-cad-pill active" data-orbit="45deg 70deg 105%" data-name="Isometric Perspective">Isometric</button>
-                    <button class="preset-cad-pill" data-orbit="90deg 85deg 110%" data-name="Bow / AI Vision Eyes">Bow View</button>
-                    <button class="preset-cad-pill" data-orbit="0deg 80deg 115%" data-name="Port Side Profile">Port Side</button>
-                    <button class="preset-cad-pill" data-orbit="180deg 80deg 115%" data-name="Starboard Profile">Starboard</button>
-                    <button class="preset-cad-pill" data-orbit="270deg 85deg 110%" data-name="Stern / Dispenser Unit">Stern</button>
-                    <button class="preset-cad-pill" data-orbit="0deg 15deg 120%" data-name="Top Deck & Solar Array">Top Deck</button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -722,7 +623,7 @@
                     <h4>Bow AI Optical & Acoustic Vision</h4>
                     <span class="tech-tag cyan">AI Edge</span>
                   </div>
-                  <p>Dual recessed bow apertures house high-resolution cameras and hydrophones that continuously score biomass surface appetite to eliminate unconsumed feed waste.</p>
+                  <p>Dual recessed bow apertures house LiDAR sensors and acoustic hydrophones (cameras are not utilized in this module) that continuously score biomass surface appetite to eliminate unconsumed feed waste.</p>
                 </div>
               </div>
 
@@ -737,9 +638,9 @@
                 <div class="feature-body">
                   <div class="feature-title-row">
                     <h4>High-Gain Telemetry & Strobe Tower</h4>
-                    <span class="tech-tag">LoRa + 4G LTE</span>
+                    <span class="tech-tag">4G LTE</span>
                   </div>
-                  <p>Dual-redundant long-range antennas communicate up to 5 km to the farm master station, paired with an emergency color-coded status beacon for night navigation.</p>
+                  <p>High-gain cellular antenna streams real-time data packets via 4G LTE to the standard cloud gateway, paired with an emergency color-coded status beacon for night navigation.</p>
                 </div>
               </div>
 
@@ -770,10 +671,10 @@
                 </div>
                 <div class="feature-body">
                   <div class="feature-title-row">
-                    <h4>High-Torque Centrifugal Micro-Dispenser</h4>
-                    <span class="tech-tag">15m Radius</span>
+                    <h4>Gravity-Assisted Precision Dispenser</h4>
+                    <span class="tech-tag">Anti-Clog Monitored</span>
                   </div>
-                  <p>Anti-jam vibratory feed throat dispenses pellets uniformly across a 15-meter diameter, eliminating schooling stress and biomass variation.</p>
+                  <p>Low-friction gravity dispersing system with active anti-clog feed throat monitoring, ensuring uniform pellet release and zero jamming in tropical humidity.</p>
                 </div>
               </div>
             </div>
@@ -839,7 +740,7 @@
             </div>
             <h3 class="flow-step-title">Edge Telemetry</h3>
             <p class="flow-step-desc">
-              Onboard microcontrollers process sensor signals at the edge and securely stream live data packets over LoRaWAN or 4G LTE to the farm cloud repository.
+              Onboard microcontrollers process sensor signals at the edge and securely stream live data packets over high-speed 4G LTE to the farm cloud gateway.
             </p>
           </div>
 
@@ -874,207 +775,6 @@
           </div>
         </div>
 
-        <!-- Ecosystem Aerial Feature Showcase: Precision Two-Pond Commercial Cluster -->
-        <div class="ecosystem-two-pond-showcase" id="ecosystemTwoPond">
-          <!-- Section Architecture Header -->
-          <div class="two-pond-header">
-            <div class="two-pond-header-info">
-              <span class="section-tag cyan">Field-Tested Architecture</span>
-              <h3 class="two-pond-title">Scalable for Smallholders and Commercial Estates Alike</h3>
-              <p class="two-pond-subtitle">
-                <span class="two-pond-desc-desktop">Engineered around precisely balanced twin-pond commercial modules. A centralized operations and resource shed bridges two large-scale aquaculture ponds, each monitored and aerated autonomously by its dedicated FinFloat™ edge buoy.</span>
-                <span class="two-pond-desc-mobile">Precision twin commercial ponds with dedicated FinFloat™ edge buoys and a symmetrical central operations hub.</span>
-              </p>
-            </div>
-            <div class="two-pond-header-actions">
-              <a href="#contact" class="btn btn-cyan">
-                <span>Request Farm Assessment</span>
-                <svg class="btn-icon" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Aerial Drone Interactive Dual-Pond Stage -->
-          <div class="two-pond-stage">
-            <!-- Top Telemetry Ribbon -->
-            <div class="two-pond-telemetry-ribbon">
-              <div class="ribbon-item">
-                <span class="ribbon-dot live"></span>
-                <span class="ribbon-label">Layout:</span>
-                <strong class="ribbon-value">2 Large-Scale Ponds</strong>
-              </div>
-              <div class="ribbon-item">
-                <span class="ribbon-label">Deployments:</span>
-                <strong class="ribbon-value">1 FinFloat™ Per Pond</strong>
-              </div>
-              <div class="ribbon-item">
-                <span class="ribbon-label">Command:</span>
-                <strong class="ribbon-value">Symmetrical Central Shed</strong>
-              </div>
-              <div class="ribbon-item">
-                <span class="ribbon-label">Lighting:</span>
-                <strong class="ribbon-value">Natural Cool Daylight Telemetry</strong>
-              </div>
-            </div>
-
-            <!-- Mobile Touch Instruction Cue -->
-            <div class="hotspot-mobile-cue">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-              </svg>
-              <span>Tap hotspots to inspect telemetry</span>
-            </div>
-
-            <!-- Aerial Canvas Frame with Natural Daylight Color Temperature -->
-            <div class="two-pond-media-frame">
-              <img 
-                src="assets/smart-aquafarm-twopond.jpg" 
-                alt="Zynaq.Aqua precision two-pond commercial layout with symmetrical central operations shed and twin FinFloat autonomous buoys under natural daylight" 
-                class="two-pond-img" 
-                loading="lazy"
-                width="1920"
-                height="1080"
-              >
-              <!-- Cool-Neutral Edge Scrim & Vignette -->
-              <div class="two-pond-cool-overlay"></div>
-
-              <!-- Interactive HUD Hotspot 1: Pond Alpha (Left Pond) -->
-              <div class="pond-hotspot hotspot-pond-a" style="left: 28%; top: 44%;">
-                <div class="hotspot-pulse"></div>
-                <div class="hotspot-pin">
-                  <span class="pin-badge">Pond Alpha</span>
-                </div>
-                <div class="hotspot-pointer-line"></div>
-                <div class="hotspot-card">
-                  <button class="hotspot-close-btn" type="button" aria-label="Close telemetry card">&times;</button>
-                  <div class="hotspot-header">
-                    <span class="hotspot-type">Large-Scale Pond 01</span>
-                    <span class="hotspot-status live">Active Telemetry</span>
-                  </div>
-                  <strong class="hotspot-name">FinFloat™ Edge Unit #01</strong>
-                  <div class="hotspot-metrics">
-                    <div class="hotspot-metric">
-                      <span>Dissolved Oxygen</span>
-                      <strong>6.8 mg/L</strong>
-                    </div>
-                    <div class="hotspot-metric">
-                      <span>Water Temp</span>
-                      <strong>27.8 °C</strong>
-                    </div>
-                  </div>
-                  <span class="hotspot-footer">Autonomous Precision Aeration & Feeding</span>
-                </div>
-              </div>
-
-              <!-- Interactive HUD Hotspot 2: Central Operations Shed (Symmetrical Center) -->
-              <div class="pond-hotspot hotspot-central-shed" style="left: 50%; top: 26%;">
-                <div class="hotspot-pulse hub"></div>
-                <div class="hotspot-pin hub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                  </svg>
-                  <span class="pin-badge">Central Operations</span>
-                </div>
-                <div class="hotspot-pointer-line hub"></div>
-                <div class="hotspot-card">
-                  <button class="hotspot-close-btn" type="button" aria-label="Close telemetry card">&times;</button>
-                  <div class="hotspot-header">
-                    <span class="hotspot-type">Operations & Infrastructure</span>
-                    <span class="hotspot-status hub">Symmetrical Center</span>
-                  </div>
-                  <strong class="hotspot-name">Centralized Resource Shed</strong>
-                  <p class="hotspot-hub-desc">
-                    Positioned symmetrically between both large ponds. Houses edge compute gateway, solar microgrid battery bank, and centralized automated feed replenishment.
-                  </p>
-                  <div class="hotspot-tags">
-                    <span>LoRaWAN Mesh Hub</span>
-                    <span>Solar Microgrid</span>
-                    <span>Zero Transit Loss</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Interactive HUD Hotspot 3: Pond Beta (Right Pond) -->
-              <div class="pond-hotspot hotspot-pond-b" style="left: 71%; top: 44%;">
-                <div class="hotspot-pulse"></div>
-                <div class="hotspot-pin">
-                  <span class="pin-badge">Pond Beta</span>
-                </div>
-                <div class="hotspot-pointer-line"></div>
-                <div class="hotspot-card">
-                  <button class="hotspot-close-btn" type="button" aria-label="Close telemetry card">&times;</button>
-                  <div class="hotspot-header">
-                    <span class="hotspot-type">Large-Scale Pond 02</span>
-                    <span class="hotspot-status live">Active Telemetry</span>
-                  </div>
-                  <strong class="hotspot-name">FinFloat™ Edge Unit #02</strong>
-                  <div class="hotspot-metrics">
-                    <div class="hotspot-metric">
-                      <span>Dissolved Oxygen</span>
-                      <strong>6.7 mg/L</strong>
-                    </div>
-                    <div class="hotspot-metric">
-                      <span>Water Temp</span>
-                      <strong>28.1 °C</strong>
-                    </div>
-                  </div>
-                  <span class="hotspot-footer">Synchronized Feeding Schedule</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Engineering Architecture Feature Cards (Below Stage) -->
-            <div class="two-pond-spec-grid">
-              <!-- Feature 1: Large Pond A -->
-              <div class="two-pond-spec-card">
-                <div class="spec-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-                  </svg>
-                </div>
-                <div class="spec-card-content">
-                  <div class="spec-badge">Pond Alpha • Left Sector</div>
-                  <h4>Large Commercial Pond 01</h4>
-                  <p class="spec-card-desc">Dedicated FinFloat™ buoy provides continuous real-time optical DO profiling and autonomous micro-pellet dispersal tailored to biomass density.</p>
-                </div>
-              </div>
-
-              <!-- Feature 2: Symmetrical Central Shed -->
-              <div class="two-pond-spec-card highlight">
-                <div class="spec-card-icon hub">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                  </svg>
-                </div>
-                <div class="spec-card-content">
-                  <div class="spec-badge hub">Centralized Symmetrical Hub</div>
-                  <h4>Central Resource & Operations Shed</h4>
-                  <p class="spec-card-desc">Equidistant placement between twin ponds halves maintenance transit times, consolidates solar power reserves, and centralizes edge IoT mesh telemetry.</p>
-                </div>
-              </div>
-
-              <!-- Feature 3: Large Pond B -->
-              <div class="two-pond-spec-card">
-                <div class="spec-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-                  </svg>
-                </div>
-                <div class="spec-card-content">
-                  <div class="spec-badge">Pond Beta • Right Sector</div>
-                  <h4>Large Commercial Pond 02</h4>
-                  <p class="spec-card-desc">Synchronized FinFloat™ unit operates in lockstep with the farm intelligence model, eliminating feed spikes and preventing pond-to-pond oxygen crashes.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1383,7 +1083,7 @@
               <div class="form-grid-2">
                 <div class="form-group">
                   <label for="farmerName" class="form-label">Full Name *</label>
-                  <input type="text" id="farmerName" class="form-input" placeholder="e.g. Saifudeen" required>
+                  <input type="text" id="farmerName" class="form-input" placeholder="e.g. John Doe" required>
                 </div>
                 <div class="form-group">
                   <label for="farmerPhone" class="form-label">Phone Number *</label>
@@ -1404,12 +1104,11 @@
 
               <div class="form-grid-2">
                 <div class="form-group">
-                  <label for="pondCount" class="form-label">Number of Ponds</label>
-                  <select id="pondCount" class="form-select">
-                    <option value="1">1 - 2 Ponds (Smallholder)</option>
-                    <option value="5" selected>3 - 8 Ponds (Mid-scale)</option>
-                    <option value="15">9 - 25 Ponds (Commercial)</option>
-                    <option value="30">25+ Ponds (Large Enterprise)</option>
+                  <label for="pondArea" class="form-label">Area of Pond</label>
+                  <select id="pondArea" class="form-select">
+                    <option value="Less than 1 Acre">Less than 1 Acre</option>
+                    <option value="1 Acre" selected>1 Acre</option>
+                    <option value="More than 1 Acre">More than 1 Acre</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -1483,7 +1182,7 @@
           <ul class="footer-links-list">
             <li><a href="#finfloat">Autonomous Precision Feeding</a></li>
             <li><a href="#finfloat">Optical DO & pH Telemetry</a></li>
-            <li><a href="#ecosystem">Edge Robotics & LoRaWAN</a></li>
+            <li><a href="#ecosystem">Edge Robotics & 4G Telemetry</a></li>
             <li><a href="#demo">Predictive AI Growth Analytics</a></li>
             <li><a href="#vision-mission">Sustainable Farm Ecology</a></li>
           </ul>

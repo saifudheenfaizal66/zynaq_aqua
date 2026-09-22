@@ -328,7 +328,7 @@ function initContactForm() {
     `;
 
     const name = document.getElementById('farmerName')?.value || 'Valued Farmer';
-    const ponds = document.getElementById('pondCount')?.value || '1';
+    const pondArea = document.getElementById('pondArea')?.value || '1 Acre';
 
     setTimeout(() => {
       submitBtn.disabled = false;
@@ -338,7 +338,7 @@ function initContactForm() {
         statusMsg.className = 'form-status-msg success';
         statusMsg.innerHTML = `
           <strong>Thank you, ${escapeHTML(name)}!</strong><br>
-          Your request for a FinFloat demonstration on your ${escapeHTML(ponds)}-pond facility has been received. 
+          Your request for a FinFloat demonstration for your pond facility (${escapeHTML(pondArea)}) has been received. 
           Our engineering team in Alappuzha will reach out to you within 24 hours at the provided contact details.
         `;
         statusMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -389,18 +389,8 @@ function init3DStudio() {
 
   // Mode Elements
   const btnMode360 = document.getElementById('btnMode360');
-  const btnMode3D = document.getElementById('btnMode3D');
   const layer360 = document.getElementById('turntableViewLayer');
-  const layer3D = document.getElementById('cadViewLayer');
   const bar360 = document.getElementById('turntableControlsBar');
-  const bar3D = document.getElementById('cadControlsBar');
-
-  // CAD Model-Viewer Elements
-  const cadViewer = document.getElementById('cadModelViewer');
-  const btnToggleCadRotate = document.getElementById('btnToggleCadRotate');
-  const cadRotateBtnLabel = document.getElementById('cadRotateBtnLabel');
-  const btnResetCadCamera = document.getElementById('btnResetCadCamera');
-  const cadPresetPills = document.querySelectorAll('.preset-cad-pill');
 
   if (!turntableImg || !hitArea) return;
 
@@ -414,9 +404,9 @@ function init3DStudio() {
   function getAngleDescription(frame) {
     const deg = Math.round((frame / TOTAL_FRAMES) * 360);
     if (frame === 0) return `Angle: ${deg}° • Starboard (Powered by Precision)`;
-    if (frame === 9) return `Angle: ${deg}° • Bow (Dual Optical AI Sensors)`;
+    if (frame === 9) return `Angle: ${deg}° • Bow (LiDAR & Acoustic Sensors)`;
     if (frame === 18) return `Angle: ${deg}° • Port Side (Engineered for the Water)`;
-    if (frame === 27) return `Angle: ${deg}° • Stern (FinFloat / Micro-Dispenser)`;
+    if (frame === 27) return `Angle: ${deg}° • Stern (FinFloat / Gravity Dispenser)`;
     if (frame > 0 && frame < 9) return `Angle: ${deg}° • Quarter-Starboard Bow`;
     if (frame > 9 && frame < 18) return `Angle: ${deg}° • Quarter-Port Bow`;
     if (frame > 18 && frame < 27) return `Angle: ${deg}° • Quarter-Port Stern`;
@@ -552,86 +542,18 @@ function init3DStudio() {
     });
   }
 
-  // Mode Switcher: 360 Turntable vs 3D CAD
-  if (btnMode360 && btnMode3D) {
-    btnMode360.addEventListener('click', () => {
-      currentMode = '360';
-      btnMode360.classList.add('active');
-      btnMode360.setAttribute('aria-selected', 'true');
-      btnMode3D.classList.remove('active');
-      btnMode3D.setAttribute('aria-selected', 'false');
-
-      layer360.classList.add('active');
-      layer3D.classList.remove('active');
-      bar360.style.display = 'flex';
-      bar3D.style.display = 'none';
-
-      if (angleBadgeText) {
-        angleBadgeText.textContent = getAngleDescription(currentFrame);
-      }
-    });
-
-    btnMode3D.addEventListener('click', () => {
-      currentMode = '3d';
-      if (isAutoSpinning) stopAutoSpin();
-
-      btnMode3D.classList.add('active');
-      btnMode3D.setAttribute('aria-selected', 'true');
-      btnMode360.classList.remove('active');
-      btnMode360.setAttribute('aria-selected', 'false');
-
-      layer3D.classList.add('active');
-      layer360.classList.remove('active');
-      bar3D.style.display = 'flex';
-      bar360.style.display = 'none';
-
-      if (angleBadgeText) {
-        angleBadgeText.textContent = '3D Real-Time WebGL CAD Mesh Active';
-      }
-    });
+  // Ensure the 360 turntable remains visible and active on startup.
+  if (btnMode360) {
+    btnMode360.classList.add('active');
+    btnMode360.setAttribute('aria-selected', 'true');
   }
 
-  // CAD Model Viewer Controls
-  if (cadViewer) {
-    if (btnToggleCadRotate) {
-      btnToggleCadRotate.addEventListener('click', () => {
-        if (cadViewer.hasAttribute('auto-rotate')) {
-          cadViewer.removeAttribute('auto-rotate');
-          btnToggleCadRotate.classList.remove('active');
-          if (cadRotateBtnLabel) cadRotateBtnLabel.textContent = 'Auto-Rotate: Off';
-        } else {
-          cadViewer.setAttribute('auto-rotate', '');
-          btnToggleCadRotate.classList.add('active');
-          if (cadRotateBtnLabel) cadRotateBtnLabel.textContent = 'Auto-Rotate: On';
-        }
-      });
-    }
+  if (layer360) {
+    layer360.classList.add('active');
+  }
 
-    if (btnResetCadCamera) {
-      btnResetCadCamera.addEventListener('click', () => {
-        cadViewer.cameraOrbit = '45deg 70deg 105%';
-        if (angleBadgeText) angleBadgeText.textContent = 'Camera Reset to Isometric Default';
-        cadPresetPills.forEach((p, i) => {
-          if (i === 0) p.classList.add('active');
-          else p.classList.remove('active');
-        });
-      });
-    }
-
-    cadPresetPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        cadPresetPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-
-        const orbit = pill.getAttribute('data-orbit');
-        const name = pill.getAttribute('data-name');
-        cadViewer.cameraOrbit = orbit;
-
-        if (angleBadgeText) {
-          angleBadgeText.textContent = `CAD Angle: ${name}`;
-        }
-      });
-    });
+  if (bar360) {
+    bar360.style.display = 'flex';
   }
 
   // Set initial frame
