@@ -2580,8 +2580,15 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 40px;
 }
 
+.studio-stage-col {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
 /* Viewport Card */
 .studio-viewport-card {
+  width: 100%;
   background: var(--bg-surface);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-lg);
@@ -2605,6 +2612,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .mode-switcher-group {
   display: flex;
+  width: 100%;
+  justify-content: center;
   gap: 8px;
   background: rgba(255, 255, 255, 0.04);
   padding: 4px;
@@ -2679,12 +2688,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #turntableImage {
-  max-width: 92%;
+  display: block;
+  width: min(92%, 720px);
+  height: auto;
   max-height: 92%;
   object-fit: contain;
   pointer-events: none;
   filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.8));
-  transition: transform 0.1s ease;
+  will-change: contents;
 }
 
 .turntable-drag-cue {
@@ -2840,6 +2851,7 @@ h1, h2, h3, h4, h5, h6 {
 .controls-subbar {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -2934,6 +2946,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .preset-pill, .preset-cad-pill {
@@ -3686,7 +3699,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .mode-switcher-group {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 6px;
     width: 100%;
   }
@@ -3737,7 +3750,7 @@ h1, h2, h3, h4, h5, h6 {
   .preset-angle-pills {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 4px;
     order: 2;
   }

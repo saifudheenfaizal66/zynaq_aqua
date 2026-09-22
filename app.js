@@ -368,6 +368,7 @@ function escapeHTML(str) {
 function init3DStudio() {
   const TOTAL_FRAMES = 36;
   const frameImages = [];
+  const frameReady = [];
   let currentFrame = 0;
   let isDragging = false;
   let startX = 0;
@@ -375,6 +376,7 @@ function init3DStudio() {
   let isAutoSpinning = false;
   let autoSpinTimer = null;
   let currentMode = '360'; // '360' or '3d'
+  let lastRenderedFrame = -1;
 
   // DOM Elements
   const turntableImg = document.getElementById('turntableImage');
@@ -394,11 +396,33 @@ function init3DStudio() {
 
   if (!turntableImg || !hitArea) return;
 
-  // Preload all 36 frames for zero-lag silky turntable scrubbing
+  // Decode every frame before it can replace the visible image. This keeps
+  // rapid drag and orientation changes on the last rendered frame instead of
+  // showing a blank image while the browser decodes the next one.
   for (let i = 0; i < TOTAL_FRAMES; i++) {
     const img = new Image();
+    img.decoding = 'async';
+    img.loading = 'eager';
+    img.fetchPriority = i === 0 ? 'high' : 'low';
     img.src = `assets/model-360/frame.${i}.png`;
     frameImages.push(img);
+    frameReady.push(false);
+
+    const markReady = () => {
+      frameReady[i] = true;
+      if (i === currentFrame) renderFrame(i);
+    };
+
+    img.addEventListener('load', () => {
+      if (typeof img.decode === 'function') {
+        img.decode().catch(() => {}).finally(markReady);
+      } else {
+        markReady();
+      }
+    }, { once: true });
+    img.addEventListener('error', () => {
+      frameReady[i] = false;
+    }, { once: true });
   }
 
   function getAngleDescription(frame) {
@@ -413,9 +437,16 @@ function init3DStudio() {
     return `Angle: ${deg}° • Quarter-Starboard Stern`;
   }
 
+  function renderFrame(frame) {
+    if (!frameReady[frame] || frame === lastRenderedFrame) return;
+
+    turntableImg.src = frameImages[frame].src;
+    lastRenderedFrame = frame;
+  }
+
   function setFrame(newFrame, updateSlider = true) {
     currentFrame = ((newFrame % TOTAL_FRAMES) + TOTAL_FRAMES) % TOTAL_FRAMES;
-    turntableImg.src = `assets/model-360/frame.${currentFrame}.png`;
+    renderFrame(currentFrame);
 
     if (updateSlider && slider) {
       slider.value = currentFrame;
@@ -436,8 +467,9 @@ function init3DStudio() {
     });
   }
 
-  // Pointer drag events for smooth touch and mouse interaction
-  const DRAG_SENSITIVITY = 10; // pixels per frame
+  // A shorter travel per frame on narrow screens makes touch scrubbing feel
+  // natural while keeping desktop drags controlled.
+  const getDragPixelsPerFrame = () => Math.max(6, Math.min(12, hitArea.clientWidth / 45));
 
   hitArea.addEventListener('pointerdown', (e) => {
     isDragging = true;
@@ -458,7 +490,7 @@ function init3DStudio() {
   hitArea.addEventListener('pointermove', (e) => {
     if (!isDragging) return;
     const deltaX = e.clientX - startX;
-    const frameDelta = Math.round(deltaX / DRAG_SENSITIVITY);
+    const frameDelta = Math.round(deltaX / getDragPixelsPerFrame());
     // Invert delta so dragging right rotates clockwise
     setFrame(startFrame - frameDelta);
   });
@@ -506,14 +538,22 @@ function init3DStudio() {
     }
     if (dragCue) dragCue.style.opacity = '0';
 
-    autoSpinTimer = setInterval(() => {
-      setFrame(currentFrame + 1, true);
-    }, 85);
+    let lastTick = performance.now();
+    const spin = (now) => {
+      if (!isAutoSpinning) return;
+      if (now - lastTick >= 80) {
+        const elapsedFrames = Math.floor((now - lastTick) / 80);
+        lastTick += elapsedFrames * 80;
+        setFrame(currentFrame + elapsedFrames, true);
+      }
+      autoSpinTimer = requestAnimationFrame(spin);
+    };
+    autoSpinTimer = requestAnimationFrame(spin);
   }
 
   function stopAutoSpin() {
     isAutoSpinning = false;
-    clearInterval(autoSpinTimer);
+    cancelAnimationFrame(autoSpinTimer);
     autoSpinTimer = null;
     if (btnToggleSpin) {
       btnToggleSpin.classList.remove('active');
