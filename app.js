@@ -39,33 +39,67 @@ function initMobileMenu() {
   const drawer = document.getElementById('mobileNavDrawer');
   if (!toggleBtn || !drawer) return;
 
+  const closeDrawer = () => {
+    drawer.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('drawer-open');
+  };
+
   toggleBtn.addEventListener('click', () => {
     drawer.classList.toggle('open');
     const isOpen = drawer.classList.contains('open');
     toggleBtn.setAttribute('aria-expanded', isOpen);
+    document.body.classList.toggle('drawer-open', isOpen);
   });
 
-  // Close drawer on link click
+  // Smooth offset navigation helper to prevent fixed header from overlapping section titles
+  const scrollToTargetWithOffset = (href) => {
+    if (!href || !href.startsWith('#')) return false;
+    const target = document.querySelector(href);
+    if (!target) return false;
+    const header = document.querySelector('.site-header');
+    const headerHeight = header ? header.offsetHeight : 64;
+    const targetPos = target.getBoundingClientRect().top + window.pageYOffset - (headerHeight + 20);
+    window.scrollTo({
+      top: Math.max(0, targetPos),
+      behavior: 'smooth'
+    });
+    history.pushState(null, '', href);
+    return true;
+  };
+
+  // Close drawer and scroll with clearance on link click
   drawer.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      toggleBtn.setAttribute('aria-expanded', 'false');
+    link.addEventListener('click', (e) => {
+      closeDrawer();
+      const href = link.getAttribute('href');
+      if (scrollToTargetWithOffset(href)) {
+        e.preventDefault();
+      }
+    });
+  });
+
+  // Also apply header-clearance scroll to desktop nav links
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (scrollToTargetWithOffset(href)) {
+        e.preventDefault();
+      }
     });
   });
 
   // Close drawer on clicking outside
   document.addEventListener('click', (e) => {
     if (drawer.classList.contains('open') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
-      drawer.classList.remove('open');
-      toggleBtn.setAttribute('aria-expanded', 'false');
+      closeDrawer();
     }
   });
 
   // Close drawer when resized to desktop
   window.addEventListener('resize', () => {
     if (window.innerWidth > 1040 && drawer.classList.contains('open')) {
-      drawer.classList.remove('open');
-      toggleBtn.setAttribute('aria-expanded', 'false');
+      closeDrawer();
     }
   });
 }
@@ -427,14 +461,14 @@ function init3DStudio() {
 
   function getAngleDescription(frame) {
     const deg = Math.round((frame / TOTAL_FRAMES) * 360);
-    if (frame === 0) return `Angle: ${deg}° • Starboard (Powered by Precision)`;
-    if (frame === 9) return `Angle: ${deg}° • Bow (LiDAR & Acoustic Sensors)`;
-    if (frame === 18) return `Angle: ${deg}° • Port Side (Engineered for the Water)`;
-    if (frame === 27) return `Angle: ${deg}° • Stern (FinFloat / Gravity Dispenser)`;
-    if (frame > 0 && frame < 9) return `Angle: ${deg}° • Quarter-Starboard Bow`;
-    if (frame > 9 && frame < 18) return `Angle: ${deg}° • Quarter-Port Bow`;
-    if (frame > 18 && frame < 27) return `Angle: ${deg}° • Quarter-Port Stern`;
-    return `Angle: ${deg}° • Quarter-Starboard Stern`;
+    if (frame === 0) return `Starboard • ${deg}°`;
+    if (frame === 9) return `Bow • ${deg}°`;
+    if (frame === 18) return `Port Side • ${deg}°`;
+    if (frame === 27) return `Stern • ${deg}°`;
+    if (frame > 0 && frame < 9) return `Quarter-Starboard • ${deg}°`;
+    if (frame > 9 && frame < 18) return `Quarter-Port Bow • ${deg}°`;
+    if (frame > 18 && frame < 27) return `Quarter-Port Stern • ${deg}°`;
+    return `Quarter-Starboard Stern • ${deg}°`;
   }
 
   function renderFrame(frame) {
@@ -452,7 +486,7 @@ function init3DStudio() {
       slider.value = currentFrame;
     }
 
-    if (currentMode === '360' && angleBadgeText) {
+    if (angleBadgeText) {
       angleBadgeText.textContent = getAngleDescription(currentFrame);
     }
 
@@ -471,11 +505,15 @@ function init3DStudio() {
   // natural while keeping desktop drags controlled.
   const getDragPixelsPerFrame = () => Math.max(6, Math.min(12, hitArea.clientWidth / 45));
 
+  let startY = 0;
+  let hasCaptured = false;
+
   hitArea.addEventListener('pointerdown', (e) => {
     isDragging = true;
+    hasCaptured = false;
     startX = e.clientX;
+    startY = e.clientY;
     startFrame = currentFrame;
-    hitArea.setPointerCapture(e.pointerId);
 
     // Stop auto-spin if user touches
     if (isAutoSpinning) {
@@ -490,14 +528,30 @@ function init3DStudio() {
   hitArea.addEventListener('pointermove', (e) => {
     if (!isDragging) return;
     const deltaX = e.clientX - startX;
+    const deltaY = e.clientY - startY;
+
+    // Allow natural page scroll if user is dragging primarily vertically
+    if (!hasCaptured && Math.abs(deltaY) > Math.abs(deltaX) + 6) {
+      isDragging = false;
+      return;
+    }
+
+    if (!hasCaptured && Math.abs(deltaX) > 4) {
+      hasCaptured = true;
+      try {
+        hitArea.setPointerCapture(e.pointerId);
+      } catch (_) {}
+    }
+
     const frameDelta = Math.round(deltaX / getDragPixelsPerFrame());
-    // Invert delta so dragging right rotates clockwise
-    setFrame(startFrame - frameDelta);
+    // Rotate in the same direction as drag
+    setFrame(startFrame + frameDelta);
   });
 
   const endDrag = (e) => {
-    if (!isDragging) return;
+    if (!isDragging && !hasCaptured) return;
     isDragging = false;
+    hasCaptured = false;
     try {
       hitArea.releasePointerCapture(e.pointerId);
     } catch (_) {}
@@ -660,4 +714,5 @@ function initEcosystemHotspots() {
     });
   });
 }
+
 
