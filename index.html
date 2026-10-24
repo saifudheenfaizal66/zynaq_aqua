@@ -29,7 +29,7 @@
   <header class="site-header" id="siteHeader">
     <div class="container nav-inner">
       <a href="#hero" class="brand-logo-link" aria-label="Zynaq.Aqua Home">
-        <img src="assets/zynaq-logo-transparent.png" alt="Zynaq.Aqua" class="brand-logo-img" width="160" height="44">
+        <img src="assets/zynaq-logo-transparent.png" alt="Zynaq.Aqua" class="brand-logo-img" width="114" height="44">
       </a>
 
       <nav aria-label="Main Navigation">
@@ -57,7 +57,7 @@
     <!-- Mobile Drawer -->
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
       <div class="mobile-drawer-header">
-        <img src="assets/zynaq-logo-transparent.png" alt="Zynaq.Aqua" class="mobile-drawer-logo" width="130" height="36">
+        <img src="assets/zynaq-logo-transparent.png" alt="Zynaq.Aqua" class="mobile-drawer-logo" width="93" height="36">
         <span class="mobile-drawer-tag">Engineering Intelligence</span>
       </div>
       <ul class="mobile-nav-list">
@@ -89,22 +89,22 @@
         </picture>
         <div class="hero-scrim"></div>
         <div class="hero-fade-bottom"></div>
+        <div class="ambient-glow ambient-glow-hero" aria-hidden="true"></div>
       </div>
 
       <div class="container hero-inner">
         <div class="hero-content">
 
-
-          <h1 class="hero-title">
+          <h1 class="hero-title reveal-on-scroll">
             Engineering <span class="accent-word">Intelligence</span><br class="hero-title-br">
             for Modern Aquaculture
           </h1>
 
-          <p class="hero-sub">
+          <p class="hero-sub reveal-on-scroll reveal-delay-1">
             Autonomous aquatic robotics, real-time edge telemetry, and predictive water chemistry to maximize biomass yield and eliminate stock loss.
           </p>
 
-          <div class="hero-ctas">
+          <div class="hero-ctas reveal-on-scroll reveal-delay-2">
             <a href="#finfloat" class="btn btn-primary" id="heroCtaFinFloat">
               <span>Discover FinFloat</span>
               <svg class="btn-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -121,19 +121,19 @@
     <section class="metrics-section" id="overview">
       <div class="container">
         <div class="metrics-grid">
-          <div class="metric-card">
+          <div class="metric-card reveal-on-scroll reveal-delay-1">
             <div class="metric-value">24/7</div>
             <div class="metric-label">Real-Time DO &amp; Temp Telemetry</div>
           </div>
-          <div class="metric-card">
+          <div class="metric-card reveal-on-scroll reveal-delay-2">
             <div class="metric-value">65%</div>
             <div class="metric-label">Routine Farm Labor Reduction</div>
           </div>
-          <div class="metric-card">
+          <div class="metric-card reveal-on-scroll reveal-delay-3">
             <div class="metric-value">60 kg</div>
             <div class="metric-label">Anti-Clog Gravity Hopper</div>
           </div>
-          <div class="metric-card">
+          <div class="metric-card reveal-on-scroll reveal-delay-4">
             <div class="metric-value">72 Hrs</div>
             <div class="metric-label">Solar Autonomy Buffer</div>
           </div>
@@ -143,54 +143,53 @@
 
     <!-- FINFLOAT SPOTLIGHT + 360 VIEWER -->
     <section class="spotlight-section" id="finfloat">
+      <div class="ambient-glow ambient-glow-spotlight" aria-hidden="true"></div>
       <div class="container">
-        <div class="section-eyebrow">
+        <div class="section-eyebrow reveal-on-scroll">
           <span class="eyebrow-tag">Flagship Innovation</span>
         </div>
-        <div class="section-header-text">
+        <div class="section-header-text reveal-on-scroll reveal-delay-1">
           <h2 class="section-title">FinFloat &mdash; The Foundational Anchor</h2>
           <p class="section-sub">A fully connected intelligent system serving as the bedrock of modern data-driven pond management.</p>
         </div>
 
         <div class="spotlight-grid">
           <!-- Left: 360 viewer -->
-          <div class="spotlight-viewer-col" id="model-explorer">
-            <div class="studio-viewport-card">
-              <div class="viewport-top-bar">
-                <div class="viewport-model-identity">
-                  <span class="viewport-status-dot"></span>
-                  <span class="viewport-model-name">FinFloat&trade; Interactive Buoy</span>
-                </div>
-                <div class="viewport-angle-pill" id="viewAngleText">Starboard &bull; 0&deg;</div>
-              </div>
-
+          <div class="spotlight-viewer-col reveal-on-scroll reveal-delay-1" id="model-explorer">
+            <div class="studio-viewport-card studio-viewport-clean">
               <div class="viewport-screen-container" id="viewportScreen">
-                <div class="turntable-view-layer active" id="turntableViewLayer">
-                  <div class="turntable-canvas-wrapper" id="turntableHitArea">
-                    <img id="turntableImage" src="assets/model-360/frame.0.png" alt="FinFloat 360 Studio Render" draggable="false">
-                    <div class="turntable-drag-cue" id="dragCueOverlay">
-                      <div class="cue-pill">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M7 16l-4-4 4-4M17 8l4 4-4 4M3 12h18"/>
-                        </svg>
-                        <span>Drag to rotate 360&deg;</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <div class="turntable-floor-glow" aria-hidden="true"></div>
 
-              <div class="studio-controls-toolbar">
-                <div class="controls-subbar" id="turntableControlsBar">
-                  <button class="studio-ctrl-btn auto-spin-btn" id="btnToggleSpin" title="Toggle Auto-Spin">
-                    <svg class="icon-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                      <polygon points="5 3 19 12 5 21 5 3"/>
+                <!-- Minimalist Preloader -->
+                <div class="turntable-loader" id="turntableLoader" role="status" aria-live="polite">
+                  <div class="turntable-spinner"></div>
+                  <div class="turntable-progress-text" id="turntableProgressText">0%</div>
+                  <span class="turntable-loader-sub">FinFloat 3D Engine</span>
+                </div>
+
+                <!-- Error Fallback Notice -->
+                <div class="turntable-error" id="turntableError" style="display:none;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                  <span>Failed to load 3D viewport.</span>
+                  <button type="button" class="btn btn-outline-nav btn-sm" id="btnRetry360">Retry</button>
+                </div>
+
+                <!-- Stable Initial Resting Poster / Placeholder (prevents layout shift) -->
+                <img src="assets/360-transparent/frame_0.png" alt="FinFloat 3D Model Resting View" class="turntable-poster" id="turntablePoster" width="600" height="500" fetchpriority="high">
+
+                <!-- Clean 3D Model Viewport Canvas -->
+                <canvas id="turntableCanvas" class="turntable-canvas" width="600" height="500" aria-label="FinFloat 360-degree interactive model viewport"></canvas>
+
+                <!-- Subtle Drag Cue Overlay -->
+                <div class="turntable-drag-cue" id="dragCueOverlay">
+                  <div class="cue-pill">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M7 16l-4-4 4-4M17 8l4 4-4 4M3 12h18"/>
                     </svg>
-                    <svg class="icon-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
-                      <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
-                    </svg>
-                    <span id="spinBtnLabel">Auto-Spin</span>
-                  </button>
+                    <span>Drag to rotate 360&deg;</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -198,13 +197,13 @@
 
           <!-- Right: capability cards -->
           <div class="spotlight-cards-col">
-            <div class="capability-header">
+            <div class="capability-header reveal-on-scroll">
               <span class="eyebrow-tag">Core Capabilities</span>
               <h3 class="capability-title">What FinFloat Does</h3>
             </div>
 
             <div class="capability-cards">
-              <div class="cap-card">
+              <div class="cap-card reveal-on-scroll reveal-delay-2">
                 <div class="cap-card-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
@@ -216,7 +215,7 @@
                 </div>
               </div>
 
-              <div class="cap-card">
+              <div class="cap-card reveal-on-scroll reveal-delay-3">
                 <div class="cap-card-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="10"/>
@@ -229,7 +228,7 @@
                 </div>
               </div>
 
-              <div class="cap-card">
+              <div class="cap-card reveal-on-scroll reveal-delay-4">
                 <div class="cap-card-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/>
@@ -243,12 +242,12 @@
               </div>
             </div>
 
-            <div class="spotlight-cta">
-              <a href="#contact" class="btn btn-primary">
+            <div class="spotlight-cta reveal-on-scroll reveal-delay-5">
+              <a href="#contact" class="btn btn-primary" id="spotlightInquireBtn">
                 <span>Inquire About Deployment</span>
                 <svg class="btn-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <a href="#specs" class="btn btn-ghost-sm">View All Specs &rarr;</a>
+              <a href="#specs" class="btn btn-ghost-sm" id="spotlightSpecsBtn">View All Specs &rarr;</a>
             </div>
           </div>
         </div>
@@ -258,16 +257,16 @@
     <!-- HOW IT WORKS -->
     <section class="pipeline-section" id="ecosystem">
       <div class="container">
-        <div class="section-eyebrow centered">
-          <span class="eyebrow-tag cyan">Operational Pipeline</span>
+        <div class="section-eyebrow centered reveal-on-scroll">
+          <span class="eyebrow-tag green">Operational Pipeline</span>
         </div>
-        <div class="section-header-text centered">
+        <div class="section-header-text centered reveal-on-scroll reveal-delay-1">
           <h2 class="section-title">How It Works</h2>
           <p class="section-sub">Three autonomous stages eliminate manual farm intervention &mdash; from submerged sensing to precision actuation.</p>
         </div>
 
         <div class="pipeline-grid">
-          <div class="pipeline-card">
+          <div class="pipeline-card reveal-on-scroll reveal-delay-1">
             <div class="pipeline-stage-num">Stage 01</div>
             <div class="pipeline-icon-wrap">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -278,15 +277,15 @@
             <p class="pipeline-card-desc">Continuous probe telemetry at critical pond depths &mdash; DO, temperature, pH, and turbidity sampled in real time, 24/7.</p>
           </div>
 
-          <div class="pipeline-connector" aria-hidden="true">
+          <div class="pipeline-connector reveal-on-scroll reveal-delay-2" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </div>
 
-          <div class="pipeline-card">
+          <div class="pipeline-card reveal-on-scroll reveal-delay-3">
             <div class="pipeline-stage-num">Stage 02</div>
-            <div class="pipeline-icon-wrap cyan">
+            <div class="pipeline-icon-wrap green">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/>
                 <line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
@@ -296,13 +295,13 @@
             <p class="pipeline-card-desc">Cloud analytics log every shift to build a live operational farm twin &mdash; detecting hypoxia windows before they become critical.</p>
           </div>
 
-          <div class="pipeline-connector" aria-hidden="true">
+          <div class="pipeline-connector reveal-on-scroll reveal-delay-4" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </div>
 
-          <div class="pipeline-card">
+          <div class="pipeline-card reveal-on-scroll reveal-delay-5">
             <div class="pipeline-stage-num">Stage 03</div>
             <div class="pipeline-icon-wrap purple">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -319,15 +318,15 @@
     <!-- LIVE DEMO CONSOLE -->
     <section class="demo-section" id="demo">
       <div class="container">
-        <div class="section-eyebrow centered">
+        <div class="section-eyebrow centered reveal-on-scroll">
           <span class="eyebrow-tag">Interactive Simulation</span>
         </div>
-        <div class="section-header-text centered">
+        <div class="section-header-text centered reveal-on-scroll reveal-delay-1">
           <h2 class="section-title">Live Farm Telemetry &amp; Control Console</h2>
           <p class="section-sub">Experience how Zynaq.Aqua software presents live pond parameters, AI-driven feeding advice, and executes precision robotic feeding.</p>
         </div>
 
-        <div class="simulator-terminal">
+        <div class="simulator-terminal reveal-on-scroll reveal-delay-2">
           <div class="terminal-header">
             <div class="terminal-controls">
               <span class="ctrl-dot red"></span>
@@ -345,14 +344,14 @@
           </div>
 
           <div class="pond-nav-tabs">
-            <button class="pond-tab-btn active" data-pond="shrimp"><span>ðŸ¦ Pond A1: Vannamei Shrimp</span></button>
-            <button class="pond-tab-btn" data-pond="tilapia"><span>ðŸŸ Pond B2: Nile Tilapia</span></button>
-            <button class="pond-tab-btn" data-pond="seabass"><span>ðŸŒŠ Pond C4: Asian Seabass</span></button>
+            <button class="pond-tab-btn active" data-pond="shrimp"><span>🦐  Pond A1: Vannamei Shrimp</span></button>
+            <button class="pond-tab-btn" data-pond="tilapia"><span>🐟 Pond B2: Nile Tilapia</span></button>
+            <button class="pond-tab-btn" data-pond="seabass"><span>🌊 Pond C4: Asian Seabass</span></button>
           </div>
 
           <div class="terminal-body">
             <div class="telemetry-live-grid">
-              <div class="telemetry-card">
+              <div class="telemetry-card reveal-on-scroll reveal-delay-1">
                 <div class="telemetry-card-top">
                   <span class="sensor-name">Dissolved Oxygen</span>
                   <span class="sensor-status-dot"></span>
@@ -366,7 +365,7 @@
                 </svg>
               </div>
 
-              <div class="telemetry-card">
+              <div class="telemetry-card reveal-on-scroll reveal-delay-2">
                 <div class="telemetry-card-top">
                   <span class="sensor-name">Water Temperature</span>
                   <span class="sensor-status-dot"></span>
@@ -380,7 +379,7 @@
                 </svg>
               </div>
 
-              <div class="telemetry-card">
+              <div class="telemetry-card reveal-on-scroll reveal-delay-3">
                 <div class="telemetry-card-top">
                   <span class="sensor-name">pH Level</span>
                   <span class="sensor-status-dot"></span>
@@ -394,7 +393,7 @@
                 </svg>
               </div>
 
-              <div class="telemetry-card">
+              <div class="telemetry-card reveal-on-scroll reveal-delay-4">
                 <div class="telemetry-card-top">
                   <span class="sensor-name">Salinity</span>
                   <span class="sensor-status-dot"></span>
@@ -443,17 +442,18 @@
 
     <!-- HARDWARE SPECS BENTO -->
     <section class="specs-section" id="specs">
+      <div class="ambient-glow ambient-glow-specs" aria-hidden="true"></div>
       <div class="container">
-        <div class="section-eyebrow centered">
+        <div class="section-eyebrow centered reveal-on-scroll">
           <span class="eyebrow-tag">Engineering Specifications</span>
         </div>
-        <div class="section-header-text centered">
+        <div class="section-header-text centered reveal-on-scroll reveal-delay-1">
           <h2 class="section-title">Production Hardware</h2>
           <p class="section-sub">Every contour of the FinFloat housing was custom-engineered for hydrodynamic balance, anti-corrosion marine endurance, and solar autonomy.</p>
         </div>
 
         <div class="specs-bento-grid">
-          <div class="spec-bento-card">
+          <div class="spec-bento-card reveal-on-scroll reveal-delay-1">
             <div class="spec-bento-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M2 18h20M2 14c3 0 5-2 8-2s5 2 8 2 3-2 4-2M4 10l2-4h12l2 4"/>
@@ -464,7 +464,7 @@
             <p class="spec-bento-desc">Hydrodynamic Twin-Pontoon (Catamaran) &mdash; zero rollover in surface chop and aerator currents.</p>
           </div>
 
-          <div class="spec-bento-card">
+          <div class="spec-bento-card reveal-on-scroll reveal-delay-2">
             <div class="spec-bento-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
@@ -475,7 +475,7 @@
             <p class="spec-bento-desc">Moisture-sealed industrial capacity with gravity-assisted dispensing and active anti-clog monitoring.</p>
           </div>
 
-          <div class="spec-bento-card">
+          <div class="spec-bento-card reveal-on-scroll reveal-delay-3">
             <div class="spec-bento-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="4"/>
@@ -487,7 +487,7 @@
             <p class="spec-bento-desc">Monocrystalline solar array with 72-hour battery backup for continuous cloudy-day pond operations.</p>
           </div>
 
-          <div class="spec-bento-card">
+          <div class="spec-bento-card reveal-on-scroll reveal-delay-4">
             <div class="spec-bento-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/>
@@ -505,7 +505,7 @@
     <!-- CTA BANNER -->
     <section class="cta-banner-section">
       <div class="container">
-        <div class="cta-banner-card">
+        <div class="cta-banner-card reveal-on-scroll">
           <div class="cta-banner-content">
             <span class="eyebrow-tag" style="margin-bottom:20px; display:inline-flex;">Deploy Now</span>
             <h2 class="cta-banner-title">Ready to deploy intelligent aquaculture infrastructure?</h2>
@@ -647,7 +647,7 @@
       <div class="footer-grid">
         <div class="footer-brand-col">
           <a href="#hero" aria-label="Zynaq.Aqua Home">
-            <img src="assets/zynaq-logo-transparent.png" alt="Zynaq.Aqua" class="footer-logo" width="150" height="42">
+            <img src="assets/zynaq-logo-transparent.png" alt="Zynaq.Aqua" class="footer-logo" width="109" height="42">
           </a>
           <p class="footer-brand-desc">Engineering Intelligence for modern aquaculture. Bridging robotics, automation, multi-parameter sensing, and cloud AI for a connected and sustainable aquaculture future.</p>
         </div>

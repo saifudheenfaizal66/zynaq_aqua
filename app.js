@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTelemetryTicker();
   init3DStudio();
   initEcosystemHotspots();
+  initScrollReveal();
 });
 
 /* ==========================================================================
@@ -392,8 +393,41 @@ function updateSparkline(id, minY, maxY) {
   }
 }
 
+/* ==========================================================================
+   10. SCROLL-DRIVEN REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+   ========================================================================== */
 
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.reveal-on-scroll');
+  if (!elements.length) return;
 
+  // Immediate reveal for users preferring reduced motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    elements.forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  // Graceful fallback if IntersectionObserver is not supported
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -40px 0px',
+    threshold: 0.15
+  });
+
+  elements.forEach(el => observer.observe(el));
+}
 /* ==========================================================================
    6. CONTACT FORM INTERACTION & FEEDBACK
    ========================================================================== */
@@ -454,262 +488,277 @@ function escapeHTML(str) {
 }
 
 /* ==========================================================================
-   7. INTERACTIVE 3D CAD STUDIO & 360 TURNTABLE ENGINE
+   7. INTERACTIVE 360° TRANSPARENT PRODUCT VIEWER (CANVAS + INERTIA + PRELOADER)
+   ========================================================================== */
+
+/* ==========================================================================
+   7. INTERACTIVE 3D PRODUCT VIEWPORT (TRANSPARENT + INERTIA + 2S AUTO-RESUME)
    ========================================================================== */
 
 function init3DStudio() {
-  const TOTAL_FRAMES = 36;
-  const frameImages = [];
-  const frameReady = [];
-  let currentFrame = 0;
-  let isDragging = false;
-  let startX = 0;
-  let startFrame = 0;
-  let isAutoSpinning = false;
-  let autoSpinTimer = null;
-  let currentMode = '360'; // '360' or '3d'
-  let lastRenderedFrame = -1;
-
-  // DOM Elements
-  const turntableImg = document.getElementById('turntableImage');
-  const hitArea = document.getElementById('turntableHitArea');
+  const canvas = document.getElementById('turntableCanvas');
+  const hitArea = document.getElementById('viewportScreen');
   const dragCue = document.getElementById('dragCueOverlay');
-  const slider = document.getElementById('turntableSlider');
-  const btnToggleSpin = document.getElementById('btnToggleSpin');
-  const btnResetSpin = document.getElementById('btnResetSpin');
-  const spinBtnLabel = document.getElementById('spinBtnLabel');
-  const angleBadgeText = document.getElementById('viewAngleText');
-  const presetPills = document.querySelectorAll('.preset-pill');
+  const loader = document.getElementById('turntableLoader');
+  const progressText = document.getElementById('turntableProgressText');
+  const errorBox = document.getElementById('turntableError');
+  const retryBtn = document.getElementById('btnRetry360');
+  const poster = document.getElementById('turntablePoster');
 
-  // Mode Elements
-  const btnMode360 = document.getElementById('btnMode360');
-  const layer360 = document.getElementById('turntableViewLayer');
-  const bar360 = document.getElementById('turntableControlsBar');
+  if (!canvas || !hitArea) return;
 
-  if (!turntableImg || !hitArea) return;
+  const ctx = canvas.getContext('2d');
+  const TOTAL_FRAMES = 36;
+  const frames = [];
+  let loadedCount = 0;
+  let isFullyLoaded = false;
 
-  // Decode every frame before it can replace the visible image. This keeps
-  // rapid drag and orientation changes on the last rendered frame instead of
-  // showing a blank image while the browser decodes the next one.
-  for (let i = 0; i < TOTAL_FRAMES; i++) {
-    const img = new Image();
-    img.decoding = 'async';
-    img.loading = 'eager';
-    img.fetchPriority = i === 0 ? 'high' : 'low';
-    img.src = `assets/model-360/frame.${i}.png`;
-    frameImages.push(img);
-    frameReady.push(false);
-
-    const markReady = () => {
-      frameReady[i] = true;
-      if (i === currentFrame) renderFrame(i);
-    };
-
-    img.addEventListener('load', () => {
-      if (typeof img.decode === 'function') {
-        img.decode().catch(() => {}).finally(markReady);
-      } else {
-        markReady();
-      }
-    }, { once: true });
-    img.addEventListener('error', () => {
-      frameReady[i] = false;
-    }, { once: true });
-  }
-
-  function getAngleDescription(frame) {
-    const deg = Math.round((frame / TOTAL_FRAMES) * 360);
-    if (frame === 0) return `Starboard • ${deg}°`;
-    if (frame === 9) return `Bow • ${deg}°`;
-    if (frame === 18) return `Port Side • ${deg}°`;
-    if (frame === 27) return `Stern • ${deg}°`;
-    if (frame > 0 && frame < 9) return `Quarter-Starboard • ${deg}°`;
-    if (frame > 9 && frame < 18) return `Quarter-Port Bow • ${deg}°`;
-    if (frame > 18 && frame < 27) return `Quarter-Port Stern • ${deg}°`;
-    return `Quarter-Starboard Stern • ${deg}°`;
-  }
-
-  function renderFrame(frame) {
-    if (!frameReady[frame] || frame === lastRenderedFrame) return;
-
-    turntableImg.src = frameImages[frame].src;
-    lastRenderedFrame = frame;
-  }
-
-  function setFrame(newFrame, updateSlider = true) {
-    currentFrame = ((newFrame % TOTAL_FRAMES) + TOTAL_FRAMES) % TOTAL_FRAMES;
-    renderFrame(currentFrame);
-
-    if (updateSlider && slider) {
-      slider.value = currentFrame;
-    }
-
-    if (angleBadgeText) {
-      angleBadgeText.textContent = getAngleDescription(currentFrame);
-    }
-
-    // Update active preset pill if matches exactly
-    presetPills.forEach(pill => {
-      const pillFrame = parseInt(pill.getAttribute('data-frame'), 10);
-      if (pillFrame === currentFrame) {
-        pill.classList.add('active');
-      } else {
-        pill.classList.remove('active');
-      }
-    });
-  }
-
-  // A shorter travel per frame on narrow screens makes touch scrubbing feel
-  // natural while keeping desktop drags controlled.
-  const getDragPixelsPerFrame = () => Math.max(6, Math.min(12, hitArea.clientWidth / 45));
-
+  // Interaction & Physics State: Smooth touch-drag damping & inertia
+  let currentFloatIndex = 0; // Stable initial resting camera angle (frame 0)
+  let velocity = 0;          // Inertia velocity (frames/tick)
+  let isDragging = false;
+  let isPointerDown = false;
+  let startX = 0;
   let startY = 0;
-  let hasCaptured = false;
+  let lastX = 0;
+  let lastTime = 0;
+  let hasEvaluatedTouchDirection = false;
+  let isTouchHorizontalLocked = false;
+  let lastActivePointerId = null;
 
+  // Optimized Damping: settle smoothly on drag release (0 CPU when idle)
+  const DAMPING = 0.92;
+  const MIN_VELOCITY = 0.005;
+
+  // Responsive Canvas with Device Pixel Ratio capped at 2 for mobile performance
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = hitArea.getBoundingClientRect();
+    const width = Math.round(rect.width);
+    const height = Math.round(rect.height);
+
+    if (width === 0 || height === 0) return;
+
+    if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    renderFrame();
+  }
+
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+
+  // Render centered image floating seamlessly on 100% transparent background
+  function renderFrame() {
+    if (loadedCount === 0 && (!frames[0] || !frames[0].complete)) return;
+
+    let frameIdx = Math.floor(currentFloatIndex) % TOTAL_FRAMES;
+    if (frameIdx < 0) frameIdx += TOTAL_FRAMES;
+
+    const img = frames[frameIdx];
+    if (!img || !img.complete || img.naturalWidth === 0) return;
+
+    const rect = hitArea.getBoundingClientRect();
+    const cWidth = rect.width;
+    const cHeight = rect.height;
+
+    // 100% transparent background - blend directly into parent section
+    ctx.clearRect(0, 0, cWidth, cHeight);
+
+    // Padding ensures model is prominent without clipping on any viewport
+    const padding = cWidth < 480 ? 12 : 20;
+    const availW = Math.max(10, cWidth - padding * 2);
+    const availH = Math.max(10, cHeight - padding * 2);
+    const scale = Math.min(availW / img.naturalWidth, availH / img.naturalHeight);
+
+    const drawW = img.naturalWidth * scale;
+    const drawH = img.naturalHeight * scale;
+    const drawX = (cWidth - drawW) / 2;
+    const drawY = (cHeight - drawH) / 2;
+
+    ctx.drawImage(img, drawX, drawY, drawW, drawH);
+
+    // Smoothly hide poster once canvas has painted
+    if (poster && !poster.classList.contains('hidden')) {
+      poster.classList.add('hidden');
+    }
+  }
+
+  // Animation Loop (Runs ONLY during drag inertia, 0 CPU overhead when idle)
+  let rafId = null;
+  function tick() {
+    if (!isDragging && Math.abs(velocity) > MIN_VELOCITY) {
+      currentFloatIndex = (currentFloatIndex + velocity + TOTAL_FRAMES) % TOTAL_FRAMES;
+      velocity *= DAMPING;
+      renderFrame();
+      rafId = requestAnimationFrame(tick);
+    } else {
+      velocity = 0;
+      rafId = null;
+    }
+  }
+
+  function requestTick() {
+    if (!rafId) {
+      rafId = requestAnimationFrame(tick);
+    }
+  }
+
+  // Pointer & Touch Events for Smooth Manual Drag Orbit Controls
   hitArea.addEventListener('pointerdown', (e) => {
-    isDragging = true;
-    hasCaptured = false;
+    isPointerDown = true;
+    isDragging = false;
+    hasEvaluatedTouchDirection = false;
+    isTouchHorizontalLocked = false;
+    lastActivePointerId = e.pointerId;
+
     startX = e.clientX;
     startY = e.clientY;
-    startFrame = currentFrame;
+    lastX = e.clientX;
+    lastTime = performance.now();
+    velocity = 0;
 
-    // Stop auto-spin if user touches
-    if (isAutoSpinning) {
-      stopAutoSpin();
+    // Stop inertia immediately on contact
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
     }
 
+    // Retain clear lightweight hint and smoothly fade out on touch start
     if (dragCue) {
-      dragCue.style.opacity = '0';
+      dragCue.classList.add('hidden');
     }
   });
 
   hitArea.addEventListener('pointermove', (e) => {
-    if (!isDragging) return;
-    const deltaX = e.clientX - startX;
-    const deltaY = e.clientY - startY;
+    if (!isPointerDown) return;
 
-    // Allow natural page scroll if user is dragging primarily vertically
-    if (!hasCaptured && Math.abs(deltaY) > Math.abs(deltaX) + 6) {
-      isDragging = false;
-      return;
+    const deltaX = e.clientX - lastX;
+    const now = performance.now();
+
+    // Direction lock evaluation for mobile touch devices
+    if (!hasEvaluatedTouchDirection) {
+      const totalDx = Math.abs(e.clientX - startX);
+      const totalDy = Math.abs(e.clientY - startY);
+
+      if (totalDx > 5 || totalDy > 5) {
+        hasEvaluatedTouchDirection = true;
+        if (totalDx >= totalDy) {
+          isTouchHorizontalLocked = true;
+          isDragging = true;
+          canvas.classList.add('is-dragging');
+          try {
+            hitArea.setPointerCapture(e.pointerId);
+          } catch (_) {}
+        } else {
+          // Vertical swipe: let page scroll naturally
+          isPointerDown = false;
+          return;
+        }
+      }
     }
 
-    if (!hasCaptured && Math.abs(deltaX) > 4) {
-      hasCaptured = true;
-      try {
-        hitArea.setPointerCapture(e.pointerId);
-      } catch (_) {}
-    }
+    if (isDragging) {
+      // Calculate instantaneous velocity with smooth touch-drag sensitivity
+      const frameDelta = -(deltaX / 12);
+      currentFloatIndex = (currentFloatIndex + frameDelta + TOTAL_FRAMES) % TOTAL_FRAMES;
+      velocity = velocity * 0.4 + frameDelta * 0.6; // smooth exponential moving average
 
-    const frameDelta = Math.round(deltaX / getDragPixelsPerFrame());
-    // Rotate in the same direction as drag
-    setFrame(startFrame + frameDelta);
+      lastX = e.clientX;
+      lastTime = now;
+      renderFrame();
+    }
   });
 
-  const endDrag = (e) => {
-    if (!isDragging && !hasCaptured) return;
-    isDragging = false;
-    hasCaptured = false;
-    try {
-      hitArea.releasePointerCapture(e.pointerId);
-    } catch (_) {}
+  const handlePointerEnd = (e) => {
+    if (!isPointerDown && !isDragging) return;
+
+    isPointerDown = false;
+    if (isDragging) {
+      isDragging = false;
+      canvas.classList.remove('is-dragging');
+      try {
+        if (lastActivePointerId !== null) {
+          hitArea.releasePointerCapture(lastActivePointerId);
+        }
+      } catch (_) {}
+
+      // Clamp inertia velocity and coast to smooth halt
+      velocity = Math.max(-1.8, Math.min(1.8, velocity));
+      if (Math.abs(velocity) > MIN_VELOCITY) {
+        requestTick();
+      }
+    }
+    lastActivePointerId = null;
   };
 
-  hitArea.addEventListener('pointerup', endDrag);
-  hitArea.addEventListener('pointercancel', endDrag);
+  hitArea.addEventListener('pointerup', handlePointerEnd);
+  hitArea.addEventListener('pointercancel', handlePointerEnd);
 
-  // Slider interaction
-  if (slider) {
-    slider.addEventListener('input', (e) => {
-      if (isAutoSpinning) stopAutoSpin();
-      if (dragCue) dragCue.style.opacity = '0';
-      setFrame(parseInt(e.target.value, 10), false);
-    });
-  }
+  // Preload frames sequentially / progressively
+  function loadSequence() {
+    loadedCount = 0;
+    isFullyLoaded = false;
+    frames.length = 0;
 
-  // Preset Buttons
-  presetPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      if (isAutoSpinning) stopAutoSpin();
-      if (dragCue) dragCue.style.opacity = '0';
-      const targetFrame = parseInt(pill.getAttribute('data-frame'), 10);
-      setFrame(targetFrame, true);
-    });
-  });
-
-  // Auto Spin Play/Pause
-  function startAutoSpin() {
-    isAutoSpinning = true;
-    if (btnToggleSpin) {
-      btnToggleSpin.classList.add('active');
-      const iconPlay = btnToggleSpin.querySelector('.icon-play');
-      const iconPause = btnToggleSpin.querySelector('.icon-pause');
-      if (iconPlay) iconPlay.style.display = 'none';
-      if (iconPause) iconPause.style.display = 'block';
-      if (spinBtnLabel) spinBtnLabel.textContent = 'Pause';
+    if (errorBox) errorBox.style.display = 'none';
+    if (loader) {
+      loader.classList.remove('loaded');
+      if (progressText) progressText.textContent = '0%';
     }
-    if (dragCue) dragCue.style.opacity = '0';
 
-    let lastTick = performance.now();
-    const spin = (now) => {
-      if (!isAutoSpinning) return;
-      if (now - lastTick >= 80) {
-        const elapsedFrames = Math.floor((now - lastTick) / 80);
-        lastTick += elapsedFrames * 80;
-        setFrame(currentFrame + elapsedFrames, true);
-      }
-      autoSpinTimer = requestAnimationFrame(spin);
-    };
-    autoSpinTimer = requestAnimationFrame(spin);
-  }
+    for (let i = 0; i < TOTAL_FRAMES; i++) {
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = `assets/360-transparent/frame_${i}.png`;
+      frames.push(img);
 
-  function stopAutoSpin() {
-    isAutoSpinning = false;
-    cancelAnimationFrame(autoSpinTimer);
-    autoSpinTimer = null;
-    if (btnToggleSpin) {
-      btnToggleSpin.classList.remove('active');
-      const iconPlay = btnToggleSpin.querySelector('.icon-play');
-      const iconPause = btnToggleSpin.querySelector('.icon-pause');
-      if (iconPlay) iconPlay.style.display = 'block';
-      if (iconPause) iconPause.style.display = 'none';
-      if (spinBtnLabel) spinBtnLabel.textContent = 'Auto-Spin';
+      const onFrameSuccess = () => {
+        loadedCount++;
+        const pct = Math.round((loadedCount / TOTAL_FRAMES) * 100);
+        if (progressText) progressText.textContent = `${pct}%`;
+
+        // Render first resting frame immediately once available
+        if (i === 0 || loadedCount === 1) {
+          resizeCanvas();
+        }
+
+        // When all frames are ready, unveil the clean viewer
+        if (loadedCount === TOTAL_FRAMES) {
+          isFullyLoaded = true;
+          if (loader) loader.classList.add('loaded');
+          resizeCanvas();
+        }
+      };
+
+      img.addEventListener('load', onFrameSuccess, { once: true });
+      img.addEventListener('error', () => {
+        img.src = `assets/360-transparent/frame-${i}.png`;
+        img.addEventListener('load', onFrameSuccess, { once: true });
+        img.addEventListener('error', () => {
+          loadedCount++;
+          if (loadedCount === TOTAL_FRAMES) {
+            isFullyLoaded = true;
+            if (loader) loader.classList.add('loaded');
+            resizeCanvas();
+          }
+        }, { once: true });
+      }, { once: true });
     }
   }
 
-  if (btnToggleSpin) {
-    btnToggleSpin.addEventListener('click', () => {
-      if (isAutoSpinning) {
-        stopAutoSpin();
-      } else {
-        startAutoSpin();
-      }
+  // Retry button in case of network glitch
+  if (retryBtn) {
+    retryBtn.addEventListener('click', () => {
+      loadSequence();
     });
   }
 
-  if (btnResetSpin) {
-    btnResetSpin.addEventListener('click', () => {
-      if (isAutoSpinning) stopAutoSpin();
-      setFrame(0, true);
-    });
-  }
-
-  // Ensure the 360 turntable remains visible and active on startup.
-  if (btnMode360) {
-    btnMode360.classList.add('active');
-    btnMode360.setAttribute('aria-selected', 'true');
-  }
-
-  if (layer360) {
-    layer360.classList.add('active');
-  }
-
-  if (bar360) {
-    bar360.style.display = 'flex';
-  }
-
-  // Set initial frame
-  setFrame(0, true);
+  // Kick off frame preloader and render initial resting view
+  loadSequence();
 }
 
 /* ==========================================================================
