@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initMobileMenu();
+  initInquiryModal();     // FAB + slide-over modal
   initFinFloatTabs();
   initPondSimulator();
   initContactForm();
@@ -101,6 +102,63 @@ function initMobileMenu() {
     if (window.innerWidth > 1040 && drawer.classList.contains('open')) {
       closeDrawer();
     }
+  });
+}
+
+/* ==========================================================================
+   2. INQUIRY FAB + MODAL
+   ========================================================================== */
+
+function initInquiryModal() {
+  const fab       = document.getElementById('inquiryFab');
+  const overlay   = document.getElementById('inquiryModalOverlay');
+  const closeBtn  = document.getElementById('inquiryModalClose');
+  if (!fab || !overlay) return;
+
+  const openModal = () => {
+    overlay.removeAttribute('hidden');
+    document.body.classList.add('modal-open');
+    // Focus first input for a11y
+    const firstInput = overlay.querySelector('input, select, textarea, button');
+    if (firstInput) setTimeout(() => firstInput.focus(), 80);
+  };
+
+  const closeModal = () => {
+    overlay.setAttribute('hidden', '');
+    document.body.classList.remove('modal-open');
+    fab.focus();
+  };
+
+  fab.addEventListener('click', openModal);
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  // Backdrop click closes modal
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  // Escape key closes modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !overlay.hasAttribute('hidden')) {
+      closeModal();
+    }
+  });
+
+  // Intercept ALL #contact anchor clicks across the page → open modal
+  document.querySelectorAll('a[href="#contact"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Close mobile drawer if open
+      const drawer = document.getElementById('mobileNavDrawer');
+      const toggle = document.getElementById('mobileMenuToggle');
+      if (drawer && drawer.classList.contains('open')) {
+        drawer.classList.remove('open');
+        document.body.classList.remove('drawer-open');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
+      openModal();
+    });
   });
 }
 
